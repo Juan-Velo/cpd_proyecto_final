@@ -1,0 +1,41 @@
+# Material interno de ensayo de la exposición (no forma parte de la entrega)
+GUION_EXPOSICION.md
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# LaTeX: archivos auxiliares de compilación (solo en informe/ y presentacion/;
+# los *.out de resultados/logs/ son logs de Slurm y SÍ se versionan)
+/informe/*.aux
+/informe/*.log
+/informe/*.out
+/informe/*.toc
+/informe/*.synctex.gz
+/informe/*.fls
+/informe/*.fdb_latexmk
+/presentacion/*.aux
+/presentacion/*.log
+/presentacion/*.out
+/presentacion/*.toc
+/presentacion/*.nav
+/presentacion/*.snm
+/presentacion/*.vrb
+/presentacion/*.synctex.gz
+/presentacion/*.fls
+/presentacion/*.fdb_latexmk
+
+# Salidas regenerables y diagnósticos locales
+*.npy
+check_env.log
+resultados/*/figs/
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

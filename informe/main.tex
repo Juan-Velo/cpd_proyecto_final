@@ -1,0 +1,671 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands,es-tabla]{babel}
+\usepackage[a4paper,left=2.2cm,right=2.2cm,top=2.1cm,bottom=2.1cm,headheight=14pt,includehead,includefoot]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}\setstretch{1.13}
+\usepackage[parfill]{parskip}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{caption}
+\renewcommand{\topfraction}{0.88}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.10}
+\renewcommand{\floatpagefraction}{0.82}
+% sin líneas viudas ni huérfanas (p. ej., una sola palabra al inicio de página)
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\belowcaptionskip}{4pt}
+\captionsetup{font=small,labelfont=bf,margin=0.5cm}
+\usepackage{titlesec}
+\titleformat{\section}{\Large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection.}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.6ex plus .5ex}{0.9ex}
+\titlespacing*{\subsection}{0pt}{1.3ex plus .4ex}{0.5ex}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\itshape Proyecto 5: KNN paralelo con MPI}
+\fancyhead[R]{\small\itshape CS4052 -- Computación Paralela y Distribuida}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\definecolor{utecazul}{HTML}{1F3A5F}
+\definecolor{cajafondo}{HTML}{F2F5F9}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\SetAlgorithmName{Algoritmo}{algoritmo}{Lista de algoritmos}
+\SetKwInput{KwIn}{Entrada}\SetKwInput{KwOut}{Salida}
+\SetKwFor{ForAllPar}{forall}{pardo}{end}
+\SetKwComment{tcp}{$\triangleright$\ }{}
+\SetAlFnt{\small}\SetAlCapFnt{\small}\SetAlCapNameFnt{\small}
+\graphicspath{{figs/}}
+\newcommand{\ntr}{n_{tr}}
+\newcommand{\nte}{n_{te}}
+\newcommand{\cli}[1]{\texttt{-{}-#1}}
+\newcommand{\tsub}[1]{T_{\mathrm{#1}}}
+\renewcommand{\arraystretch}{1.08}
+\setlength{\tabcolsep}{6pt}
+
+\begin{document}
+\begin{titlepage}
+\centering
+\vspace*{0.6cm}
+{\Large\bfseries Universidad de Ingeniería y Tecnología (UTEC)\par}
+\vspace{0.15cm}
+{\large Facultad de Ciencia de la Computación\par}
+\vspace{0.5cm}
+{\large CS4052 -- Computación Paralela y Distribuida -- 2026-II\par}
+\vspace{0.6cm}
+{\color{utecazul}\rule{\linewidth}{1.2pt}\par}
+\vspace{1.4cm}
+{\Large Informe final de proyecto\par}
+\vspace{0.6cm}
+{\LARGE\bfseries\color{utecazul} Proyecto 5: paralelización del clasificador KNN\\[2pt] sobre \texttt{load\_digits} mediante MPI (\texttt{mpi4py})\par}
+\vspace{1.4cm}
+{\color{utecazul}\rule{\linewidth}{1.2pt}\par}
+\vspace{1.6cm}
+{\large\bfseries Integrantes\par}
+\vspace{0.3cm}
+{\large
+\begin{tabular}{l@{\hspace{1.5cm}}r}
+Juan David Velo Poma & 100\,\%\\
+Farid Jack Aquino Castro & 100\,\%\\
+Josue Nehemias Velo Poma & 100\,\%\\
+\end{tabular}\par}
+\vfill
+\begin{tabular}{@{}r@{\hspace{0.4cm}}l@{}}
+\textbf{Profesor:} & José Fiestas, PhD\\
+\textbf{Fecha:} & 22 de noviembre de 2026\\
+\textbf{Entorno de cómputo:} & Clúster HPC Khipu, nodo \texttt{n003}, partición \texttt{standard}\\
+\textbf{Repositorio:} & \url{https://github.com/Juan-Velo/cpd_proyecto_final}\\
+\end{tabular}
+\vspace{0.8cm}
+\end{titlepage}
+
+\pagenumbering{roman}
+\tableofcontents
+\thispagestyle{fancy}
+\clearpage
+\pagenumbering{arabic}
+
+\noindent\colorbox{cajafondo}{\begin{minipage}{\dimexpr\linewidth-2\fboxsep\relax}
+\vspace{0.3em}
+{\large\bfseries\color{utecazul} Resumen ejecutivo}\par\vspace{0.4em}
+Paralelizamos el clasificador KNN de \texttt{knn\_digits\_sec.py} siguiendo el DAG del enunciado: Scatter del conjunto de entrenamiento, Bcast de las consultas, selección local de los $k$ vecinos en \texttt{pardo}, Gather de los candidatos y voto por mayoría simple. El diseño se formaliza como PRAM con \texttt{pardo} y se analiza con trabajo, span, Brent y el modelo $\alpha$--$\beta$ del curso. Resultados principales, todos medidos en Khipu:
+\begin{itemize}\setlength{\itemsep}{1pt}
+\item \textbf{Corrección:} las tres versiones beta reproducen bit a bit las predicciones del código original. El argumento de la Sec.~\ref{sec:correccion} lo garantiza para todo $p$, y \textbf{129/129} comprobaciones en Khipu lo verifican para $p=1,\dots,17$, 32 y 64 con partición simulada, y para ocho valores de $p$ hasta 16 con MPI real (80 de las 129). La igualdad exacta del kernel GEMM se apoya en que los datos son enteros (Sec.~\ref{sec:betas}).
+\item \textbf{Rendimiento} ($\ntr=91\,968$, 16 núcleos físicos): $S=\mathbf{6.61}$, $E=0.41$ y \textbf{58.3\,GFLOP/s} equivalentes (FLOP del algoritmo), con $\tsub{comm}\le\mathbf{1.1}$\,\% del tiempo total.
+\item \textbf{Cuello de botella:} no es MPI sino la contención intra-nodo; con trabajo por proceso constante, el cómputo se vuelve $\varphi(16)=\mathbf{2.52}$ veces más lento.
+\item \textbf{Modelo:} incorporar $\varphi(p)$ a la expresión normalizada eleva el ajuste de $R^2=0.77$ a $0.993$, y fuera de muestra predice cada serie grande a partir de las otras con $R^2\ge0.994$. El $p^*$ teórico es 8.8 para \texttt{load\_digits}, consistente con la meseta medida entre 8 y 16 procesos.
+\end{itemize}
+\vspace{0.1em}
+\end{minipage}}
+\vspace{0.6em}
+
+
+% =====================================================================
+\section{Introducción}
+KNN \cite{fix1951,cover1967} asigna a una consulta $q\in\mathbb{R}^d$ la etiqueta mayoritaria de sus $k$ vecinos más cercanos. No construye modelo, así que el costo se concentra en las $\nte\cdot\ntr$ distancias de la inferencia. \texttt{load\_digits} \cite{sklearn,uci} tiene 1797 imágenes $8\times8$ ($d=64$, enteros en $[0,16]$, 10 clases). Con \texttt{test\_size=0.2} y \texttt{random\_state=42} resultan $\ntr=1437$ y $\nte=360$; usamos $k=3$.
+
+\textbf{Código base.} El programa calcula $\sqrt{\sum_l(q_l-x_l)^2}$ en un bucle de Python, ordena con \texttt{np.argsort} y vota con \texttt{Counter.most\_common(1)}. Su exactitud es 0.9833 y en Khipu tarda 1.988\,s. Dos detalles condicionan la validación. Primero, \texttt{argsort} no es estable, y 7 de las 360 consultas empatan en distancia entre el 3.\textsuperscript{er} y el 4.\textsuperscript{o} vecino, porque los píxeles enteros dan distancias al cuadrado enteras. Segundo, ante empate de votos \texttt{Counter} elige la etiqueta del vecino más cercano. Por eso todas nuestras versiones ordenan por la clave total (distancia, índice global) y votan con esa misma regla.
+
+\textbf{Solución.} Seguimos el DAG del enunciado (Fig.~\ref{fig:dag}), formalizado con \texttt{pardo} y con la notación del curso: $p$ = procesos, $r$ = rango. Adicionalmente evaluamos la descomposición alternativa (difusión de $X_{tr}$ y reparto de $X_{te}$) como línea base de comparación (Sec.~\ref{sec:variantes}).
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  node distance=10mm and 5mm, >={Stealth[length=2.2mm]},
+  task/.style={draw, rounded corners=2pt, fill=gray!8, align=center, font=\small, minimum height=8mm, inner sep=3pt},
+  cost/.style={font=\small, inner sep=1pt}]
+\node[task, minimum width=38mm] (init) {Parámetros iniciales\\ $X_{tr},y_{tr},X_{te}$ en $P_0$};
+\node[task, below left=12mm and 2mm of init] (d0) {$\mathrm{dist}_0$, top-$k$\\ $P_0$};
+\node[task, right=5mm of d0] (d1) {$\mathrm{dist}_1$, top-$k$\\ $P_1$};
+\node[font=\large, right=3mm of d1] (dots) {$\cdots$};
+\node[task, right=3mm of dots] (dp) {$\mathrm{dist}_{p-1}$, top-$k$\\ $P_{p-1}$};
+\node[task, below=12mm of d1.south east, anchor=north, xshift=6mm, minimum width=38mm] (vote) {Mayoría simple\\ ($k$ de $p\,k$ candidatos)};
+\foreach \n in {d0,d1,dp} {\draw[->] (init) -- (\n); \draw[->] (\n) -- (vote);}
+\node[cost, color=blue!60!black, anchor=east] at ($(init.west)+(-2mm,-2mm)$) {Scatter: $O\!\left(p(\alpha+\tfrac{n_{tr}}{p}\beta)\right)$};
+\node[cost, color=blue!60!black, anchor=west] at ($(init.east)+(2mm,-2mm)$) {Bcast: $O(\log p\,(\alpha+n_{te}\beta))$};
+\node[cost, color=red!60!black, anchor=east] at ($(d0.west)+(-4mm,0)$) {Cómputo: $O\!\left(\tfrac{n_{tr}n_{te}}{p}\right)$};
+\node[cost, color=blue!60!black, anchor=west] at ($(vote.east)+(2mm,1.5mm)$) {Gather: $O(p(\alpha+k\beta))$};
+\end{tikzpicture}
+\caption{DAG del enunciado \cite{enunciado} con sus costos: azul = comunicación, rojo = cómputo. Es un DAG SPA \cite{fiestasU1}: distribución, $p$ tareas independientes y recolección.}
+\label{fig:dag}
+\end{figure}
+
+
+
+% =====================================================================
+\section{Método}
+\subsection{Notación}
+La Tabla~\ref{tab:notacion} fija la notación, que sigue la convención del curso.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Notación empleada en el informe.}\label{tab:notacion}
+\begin{tabular}{@{}ll@{}}\toprule
+Símbolo & Significado\\\midrule
+$\ntr$, $\nte$ & puntos de entrenamiento y de prueba (consultas)\\
+$d$, $k$ & dimensión ($d=64$) y número de vecinos ($k=3$)\\
+$p$ & número de procesos MPI\\
+$r$, $n_r$, $o_r$ & rango de un proceso, tamaño y desplazamiento de su bloque\\
+$\alpha$, $\beta$ & latencia por mensaje y tiempo por byte\\
+$W$, $T_\infty$ & trabajo y span\\
+$T_s$, $T_p$ & tiempo secuencial y paralelo con $p$ procesos\\
+$\tsub{comp}$, $\tsub{comm}$ & tiempos de cómputo y de comunicación\\
+$S$, $E$ & speedup y eficiencia\\
+$\varphi(p)$ & factor de contención intra-nodo (medido)\\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Diseño (Foster, Flynn y particionamiento)}
+Seguimos PCAM \cite{fiestasU1b,foster}:
+\begin{itemize}
+\item \emph{Particionamiento:} cada distancia $(j,i)$ es una tarea primitiva independiente.
+\item \emph{Comunicación:} global, solo al inicio y al final.
+\item \emph{Aglomeración:} cada proceso agrupa un bloque contiguo de $n_r$ puntos de entrenamiento con todas las consultas, reduce el top-$k$ localmente y envía $k\nte$ candidatos en un único mensaje.
+\item \emph{Mapeo:} un bloque por proceso, con tamaños que difieren a lo sumo en 1.
+\end{itemize}
+Es MIMD en estilo SPMD (Flynn) y un particionamiento de datos con tareas separables, $\tsub{comm}=f(p)(\alpha+x\beta)$ \cite{fiestasU24}.
+
+\subsection{Pseudocódigos: secuencial, PRAM y distribuido con \texttt{pardo}}\label{sec:correccion}
+Partimos del código secuencial \texttt{knn\_digits\_sec.py}. Los Algs.~\ref{alg:dist}--\ref{alg:seq} lo transcriben tal cual: distancia euclidiana, \texttt{knn\_predict} y programa principal, con el tiempo medido entre las dos llamadas a \texttt{time()}.
+
+\begin{algorithm}[htbp]
+\caption{Distancia euclidiana (\texttt{euclidean\_distance})}\label{alg:dist}
+\KwIn{$a,b\in\mathbb{R}^d$}
+\KwOut{$\|a-b\|_2$}
+$\delta\leftarrow0$\;
+\For{$l\leftarrow1$ \KwTo $d$}{$\delta\leftarrow\delta+(a[l]-b[l])^2$ \tcp*{resta, cuadrado y suma}}
+\Return{$\sqrt{\delta}$} \tcp*{en total $3d$ FLOP (Sec.~\ref{sec:wspan})}
+\end{algorithm}
+
+\begin{algorithm}[htbp]
+\caption{\texttt{knn\_predict} del código base}\label{alg:pred}
+\KwIn{consulta $q\in\mathbb{R}^d$, $X_{tr}\in\mathbb{R}^{\ntr\times d}$, $y_{tr}\in\{0,\dots,9\}^{\ntr}$, $k$}
+\KwOut{etiqueta predicha $\hat y$}
+\For{$i\leftarrow1$ \KwTo $\ntr$}{$D[i]\leftarrow\textsc{Distancia}(q,X_{tr}[i])$ \tcp*{Alg.~\ref{alg:dist}}}
+$K\leftarrow\texttt{argsort}(D)[1..k]$ \tcp*{$O(\ntr\log\ntr)$, no estable}
+\Return{moda de $y_{tr}[K]$} \tcp*{\texttt{Counter.most\_common(1)}}
+\end{algorithm}
+
+\begin{algorithm}[htbp]
+\caption{KNN secuencial (programa principal)}\label{alg:seq}
+\KwIn{$X$, $y$ de \texttt{load\_digits}}
+\KwOut{exactitud y tiempo de ejecución}
+$X_{tr},X_{te},y_{tr},y_{te}\leftarrow\texttt{train\_test\_split}(X,y,\ \texttt{test\_size}=0.2,\ \texttt{random\_state}=42)$\;
+$k\leftarrow3$;\quad $t_{\mathrm{ini}}\leftarrow\texttt{time()}$\;
+\For{$j\leftarrow1$ \KwTo $\nte$}{$\hat y[j]\leftarrow\textsc{knn\_predict}(X_{te}[j],X_{tr},y_{tr},k)$ \tcp*{Alg.~\ref{alg:pred}}}
+exactitud $\leftarrow\frac1{\nte}\sum_j[\hat y[j]=y_{te}[j]]$;\quad $t_{\mathrm{fin}}\leftarrow\texttt{time()}$\;
+\Return{exactitud, $t_{\mathrm{fin}}-t_{\mathrm{ini}}$}
+\end{algorithm}
+
+Las consultas son independientes entre sí, y también lo son las distancias de una misma consulta. El modelo ideal es una PRAM CREW \cite{jaja} con un procesador por par (consulta, punto) (Alg.~\ref{alg:pram}): todos leen $X_{tr}$ y $X_{te}$ de forma concurrente y cada procesador escribe solo su propia celda, lo que expone todo el paralelismo de las distancias (Sec.~\ref{sec:wspan}). La versión con $p$ procesos MPI que sigue el DAG del enunciado, implementada en beta2 y beta3, es el Alg.~\ref{alg:mpi}.
+
+\begin{algorithm}[htbp]
+\caption{KNN en PRAM CREW ($\nte\ntr$ procesadores)}\label{alg:pram}
+\KwIn{$X_{tr},\,y_{tr},\,X_{te}$, $k$}
+\KwOut{$\hat y\in\{0,\dots,9\}^{\nte}$}
+\ForAllPar{$(j,i)\in\{1,\dots,\nte\}\times\{1,\dots,\ntr\}$}{
+  $D[j,i]\leftarrow\sqrt{\sum_{l=1}^{d}(X_{te}[j,l]-X_{tr}[i,l])^2}$\;
+}
+\ForAllPar{$j\in\{1,\dots,\nte\}$}{
+  $N_j\leftarrow$ $k$ mínimos de $D[j,\cdot]$ por (dist, índice) \tcp*{árbol}
+  $\hat y[j]\leftarrow$ mayoría simple de $y_{tr}[N_j]$\;
+}
+\end{algorithm}
+
+\begin{algorithm}[htbp]
+\caption{KNN distribuido según el DAG ($p$ procesos MPI, rango $r$)}\label{alg:mpi}
+\KwIn{$X_{tr},y_{tr},X_{te}$ en $P_0$; $k$; $p$}
+\KwOut{$\hat y$ y exactitud en $P_0$}
+$n_r\leftarrow\lfloor\ntr/p\rfloor+[\,r<\ntr\bmod p\,]$;\quad $o_r\leftarrow\sum_{j<r}n_j$ \tcp*{bloques con $\ntr$ no divisible entre $p$}
+$(X_{tr}^{(r)},y_{tr}^{(r)})_{r=0}^{p-1}\leftarrow\textsc{Scatter}(X_{tr},y_{tr},0)$ \tcp*{\texttt{comm.scatter} / \texttt{Scatterv}}
+$X_{te}\leftarrow\textsc{Bcast}(X_{te},0)$ \tcp*{\texttt{comm.bcast} / \texttt{Bcast}}
+\ForAllPar{$r\leftarrow0$ \KwTo $p-1$}{
+  \For{$j\leftarrow1$ \KwTo $\nte$}{
+    \For{$i\leftarrow1$ \KwTo $n_r$}{$D_r[j,i]\leftarrow\sqrt{\sum_{l=1}^{d}(X_{te}[j,l]-X^{(r)}_{tr}[i,l])^2}$ \tcp*{$3d$ FLOP}}
+    $K_r[j]\leftarrow$ $k$ ternas $(D_r[j,i],\,o_r+i,\,y^{(r)}_{tr}[i])$ mínimas \tcp*{\texttt{argpartition}, $O(n_r)$}
+  }
+}
+$(K_0,\dots,K_{p-1})\leftarrow\textsc{Gather}(K_r,0)$ \tcp*{\texttt{comm.gather} / \texttt{Gather}: $3k\nte$ valores por proceso}
+\If{$r=0$}{
+  \ForAllPar{$j\leftarrow1$ \KwTo $\nte$}{
+    $N_j\leftarrow$ $k$ mínimos de $\bigcup_r K_r[j]$;\quad $\hat y[j]\leftarrow$ mayoría de $y_{tr}[N_j]$ \tcp*{empate: vecino más cercano}
+  }
+  exactitud $\leftarrow\frac1{\nte}\sum_j[\hat y[j]=y_{te}[j]]$\;
+}
+\end{algorithm}
+
+\textbf{Corrección.} Todo vecino global pertenece al top-$k$ de su bloque, así que $\bigcup_rK_r[j]$ contiene el top-$k$ global. Con el orden total (distancia, índice global), el resultado no depende de $p$. Las ternas se ordenan por (distancia, índice global). El DAG anota $O(p(\alpha+k\beta))$ para el Gather; ese costo corresponde a una consulta, y el mensaje real contiene $k\nte$ ternas.
+
+Como línea base de comparación, beta3 implementa también la descomposición alternativa (Bcast de $X_{tr}$, Scatter de $X_{te}$) con la opción \cli{variant replicate} (Sec.~\ref{sec:variantes}). El Alg.~\ref{alg:rep} la reescribe con \texttt{pardo}; selecciona y vota con la misma clave total que el Alg.~\ref{alg:mpi}, así que también reproduce exactamente al secuencial.
+
+\begin{algorithm}[htbp]
+\caption{Variante alternativa: réplica de $X_{tr}$ y reparto de $X_{te}$ ($p$ procesos, rango $r$)}\label{alg:rep}
+\KwIn{$X_{tr},y_{tr},X_{te}$ en $P_0$; $k$; $p$}
+\KwOut{$\hat y$ y exactitud en $P_0$}
+$m_r\leftarrow\lfloor\nte/p\rfloor+[\,r<\nte\bmod p\,]$ \tcp*{bloques de consultas}
+$(X_{tr},y_{tr})\leftarrow\textsc{Bcast}((X_{tr},y_{tr}),0)$ \tcp*{\texttt{comm.bcast} / \texttt{Bcast}}
+$(X_{te}^{(r)})_{r=0}^{p-1}\leftarrow\textsc{Scatter}(X_{te},0)$ \tcp*{\texttt{comm.scatter} / \texttt{Scatterv}}
+\ForAllPar{$r\leftarrow0$ \KwTo $p-1$}{
+  \For{$j\leftarrow1$ \KwTo $m_r$}{
+    $N_j\leftarrow$ $k$ mínimos de $\textsc{Distancia}(X^{(r)}_{te}[j],X_{tr}[\cdot])$ \tcp*{\texttt{argpartition}, $O(\ntr)$}
+    $\hat y^{(r)}[j]\leftarrow$ mayoría de $y_{tr}[N_j]$\;
+  }
+}
+$\hat y\leftarrow\textsc{Gather}(\hat y^{(r)},0)$ \tcp*{\texttt{comm.gather} / \texttt{Gatherv}}
+\lIf{$r=0$}{exactitud $\leftarrow\frac1{\nte}\sum_j[\hat y[j]=y_{te}[j]]$}
+\end{algorithm}
+
+\subsection{Trabajo, span y Brent}\label{sec:wspan}
+Cada distancia cuesta $3d$ FLOP: $d$ restas, $d$ cuadrados, $d-1$ sumas y una raíz, todas con el mismo peso \cite{fiestasU6}. En la PRAM del Alg.~\ref{alg:pram}, con selección lineal, el trabajo, el span y la cota de Brent \cite{fiestasU2,brent} son:
+\begin{align}
+W&=3d\,\ntr\nte+\Theta(\ntr\nte),\label{eq:work}\\
+T_\infty&=O(\log d+k\log\ntr),\label{eq:span}\\
+T_p^{\mathrm{PRAM}}&=O\!\left(\tfrac{W}{p}+T_\infty\right)=O\!\left(\tfrac{\ntr\nte d}{p}+\log d+k\log\ntr\right).\label{eq:brent}
+\end{align}
+El algoritmo distribuido (Alg.~\ref{alg:mpi}) agrega la fusión de los $p\,k$ candidatos de cada consulta. Ese paso corresponde al nodo \emph{apply simply majority} del DAG (Fig.~\ref{fig:dag}) y lo ejecuta solo $P_0$, así que no se divide entre $p$ y no forma parte de la cota de Brent:
+\begin{equation}
+T_p^{\mathrm{comp}}=\underbrace{O\!\left(\tfrac{\ntr\nte d}{p}\right)}_{\text{distancias y top-}k\text{ local}}+\underbrace{O(\nte\,p\,k)}_{\text{fusión en }P_0}.\label{eq:tcomp}
+\end{equation}
+
+\subsection{Comunicación (U6.1)}\label{sec:comm}
+Bcast binomial: $\log p(\alpha+m\beta)$. Scatter/Gather divide y vencerás: $p(\alpha+\tfrac mp\beta)+(p-1)(\alpha+\tfrac mp\beta)$ \cite{fiestasU6}. Con $m$ en bytes (8 por valor):
+\begin{align}
+\tsub{sc}&=2(2p-1)\alpha+\tfrac{2p-1}{p}\,8\ntr(d+1)\beta,\\
+\tsub{bc}&=\log_2p\,(\alpha+8\nte d\beta),\label{eq:bc}\\
+\tsub{ga}&=(2p-1)(\alpha+24k\nte\beta).
+\end{align}
+
+\subsection{Relación con la multiplicación de matrices (U6.3)}\label{sec:u63}
+Como $\|q-x\|^2=\|q\|^2+\|x\|^2-2q\cdot x$, el núcleo del cálculo es $C=X_{te}X_{tr}^{\top}$, con $m=\nte$, $n=d$ y $l=\ntr$, es decir $T_s=O(\nte d\ntr)=W$ \cite{fiestasU63}. El DAG es la \emph{descomposición en filas/columnas} de U6.3: $X_{tr}^\top$ se divide en $p$ bloques (Scatter) y $X_{te}$ se difunde (Bcast). Por tanto
+\begin{equation*}
+E=O\!\left(\Big[1+\tfrac{p\log p}{\nte d\ntr}+\tfrac{p\log p}{\ntr}+\tfrac{p}{\nte}+\tfrac{p^2k}{\ntr d}\Big]^{-1}\right),
+\end{equation*}
+análogo a la $E$ de U6.3. Los dos primeros términos provienen del Bcast de $X_{te}$, igual que en U6.3. Los dos últimos no tienen equivalente allí: $p/\nte$ proviene del Scatter de $X_{tr}$, cuyo volumen ($\propto\ntr d$) no depende de $p$, y $p^2k/(\ntr d)$ proviene del Gather y de la fusión de los $p\,k$ candidatos en $P_0$. Estos dos términos fijan la isoeficiencia de la Sec.~\ref{sec:tp}. Fox, Cannon y DNS son su extensión 2D (Sec.~\ref{sec:mejoras}).
+
+\subsection{Tiempo paralelo, $p$ óptimo e isoeficiencia}\label{sec:tp}
+\begin{equation}
+T_p=\frac Ap+Bp+C\log_2p+D,\label{eq:tp}
+\end{equation}
+con $A=c_1\ntr\nte d$, $B=c_2\nte k+6\alpha+48k\nte\beta$, $C=\alpha+8\nte d\beta$ y $D\approx16\ntr(d+1)\beta$.
+\begin{align}
+&\frac{\partial T_p}{\partial p}=-\frac{A}{p^2}+B+\frac{C}{p\ln2}=0\ \Rightarrow\nonumber\\
+&p^*=\frac{-\frac{C}{\ln2}+\sqrt{\frac{C^2}{\ln^22}+4AB}}{2B}\approx\sqrt{\tfrac AB}.\label{eq:pstar}
+\end{align}
+$S=T_s/T_p$ y $E=T_s/(pT_p)$. Overhead: $T_0=pT_p-W\approx Bp^2+Cp\log p+Dp$, con $E=1/(1+T_0/W)$ \cite{fiestasU6}. La isoeficiencia $W=K\,T_0$ exige $\ntr=\Omega(p^2/d)$ y $\nte=\Omega(p)$.
+
+\subsection{Complejidad de la variante alternativa (Alg.~\ref{alg:rep})}\label{sec:comprep}
+El cómputo es el mismo que en el DAG: cada proceso calcula $(\nte/p)\,\ntr$ distancias y selecciona con \texttt{argpartition}, así que $W$ y $T_\infty$ coinciden con las Ecs.~\eqref{eq:work}--\eqref{eq:span}, y el término de fusión de la Ec.~\eqref{eq:tcomp} desaparece porque cada proceso vota sus propias consultas. Cambia la comunicación. Con las fórmulas de U6.1 \cite{fiestasU6} y $m$ en bytes:
+\begin{align}
+T^{\mathrm{rep}}_{\mathrm{bc}}&=2\log_2p\,\alpha+\log_2p\;8\ntr(d+1)\beta,\label{eq:repbc}\\
+T^{\mathrm{rep}}_{\mathrm{sc}}&=(2p-1)\alpha+\tfrac{2p-1}{p}\,8\nte d\beta,\\
+T^{\mathrm{rep}}_{\mathrm{ga}}&=(2p-1)\alpha+\tfrac{2p-1}{p}\,8\nte\beta.
+\end{align}
+Domina el Bcast de $X_{tr}$, que crece con $\ntr$ y con $\log p$; en el DAG el Bcast mueve solo $X_{te}$ (Ec.~\eqref{eq:bc}). Con $\ntr=91\,968$ y $\nte=3600$, cada difusión envía 47.8\,MB en lugar de 1.8\,MB. El overhead queda dominado por $T_0\approx p\log_2p\;8\ntr(d+1)\beta$, y con $W=c_1\ntr\nte d$:
+\begin{equation}
+E^{\mathrm{rep}}=\frac{1}{1+T_0/W}\approx\frac{1}{1+\dfrac{8(d+1)\beta}{c_1d}\cdot\dfrac{p\log_2p}{\nte}}.
+\end{equation}
+Con $\nte$ fijo, $E^{\mathrm{rep}}\to0$ al crecer $p$: la variante no es fuertemente escalable por el Bcast de $X_{tr}$. La isoeficiencia exige $\nte=\Omega(p\log p)$, independiente de $\ntr$, mientras que el DAG exige $\nte=\Omega(p)$ y $\ntr=\Omega(p^2/d)$ (Sec.~\ref{sec:tp}). Por eso el DAG conviene cuando $\ntr\gg\nte$. La Sec.~\ref{sec:variantes} contrasta esta predicción con las mediciones.
+
+\subsection{Normalización de la expresión teórica}\label{sec:norm}
+El Big-O fija la forma funcional y las constantes se obtienen de las mediciones:
+\begin{enumerate}
+\item $c_1,c_2\ge0$ por mínimos cuadrados no negativos (NNLS, ponderados por $1/T$) de $\tsub{comp}$ contra los regresores $\ntr\nte d/p$ y $\nte kp$.
+\item $\alpha,\beta\ge0$ por NNLS de $\tsub{comm}$ contra el número de arranques $M=2(2p-1)+\log_2p+(2p-1)$ y los bytes $B$ de la Sec.~\ref{sec:comm}.
+\item Se ajusta con las tres series fuertes.
+\end{enumerate}
+En la Sec.~\ref{sec:modelo} se añade el factor de contención medido $\varphi(p)$ y se distingue entre el \emph{ajuste} a los datos y la \emph{predicción} fuera de muestra, validada dejando una serie fuera.
+
+\emph{Ejemplo} ($\ntr=91\,968$, $p=8$): $A=c_1'\ntr\nte d=6.797$\,s y $\varphi(8)=2.504$, así que el cómputo vale $A\varphi/p=2.127$\,s. Se suman la fusión, $0.003$\,s; los arranques, $\alpha M=0.0003$\,s ($M=48$); y los bytes, $\beta B=0.0129$\,s ($B=9.91\times10^7$). El modelo da 2.144\,s frente a 2.134\,s medido (0.5\,\%).
+
+\subsection{Versiones beta y validación}\label{sec:betas}
+El desarrollo del código se registra en tres versiones beta (Tabla~\ref{tab:betas}); cada una se valida contra la anterior.
+
+\begin{table}[htbp]
+\centering\footnotesize
+\caption{Resumen de las versiones beta.}\label{tab:betas}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.7cm}>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{2.6cm}@{}}\toprule
+Versión & Pseudocódigo & Comunicación & Kernel de distancias & Validación\\\midrule
+\texttt{beta1\_secuencial} & Algs.~\ref{alg:dist}--\ref{alg:seq} & ninguna ($p=1$) & bucle original, bucle estable o NumPy vectorizado & = código original (360/360)\\
+\texttt{beta2\_mpi\_basico} & Alg.~\ref{alg:mpi} & \texttt{scatter}/\allowbreak\texttt{bcast}/\allowbreak\texttt{gather} sobre objetos Python & bucle original & = beta1, $p\le16$ (MPI real)\\
+\texttt{beta3\_mpi\_optimizado} & Alg.~\ref{alg:mpi}; Alg.~\ref{alg:rep} (\texttt{replicate}) & \texttt{Scatterv}/\allowbreak\texttt{Bcast}/\allowbreak\texttt{Gather} con buffers (o pickle) & GEMM exacto o fórmula directa; \texttt{argpartition} & = beta1, $p\le16$; 129/129 en total\\\bottomrule
+\end{tabularx}
+\end{table}
+
+Detalles de implementación:
+\begin{itemize}
+\item \textbf{beta1:} modos \texttt{original} (Algs.~\ref{alg:dist}--\ref{alg:seq}), \texttt{loop} (orden estable) y \texttt{vector} (NumPy por bloques); incluye el conteo de FLOP y el generador de datos.
+\item \textbf{beta2:} primera implementación del Alg.~\ref{alg:mpi}, con el bucle de distancias original.
+\item \textbf{beta3:} opciones \cli{comm}, \cli{kernel} y \cli{variant} (\texttt{replicate} = Alg.~\ref{alg:rep}); mide $\tsub{scatter}$, $\tsub{bcast}$, el cómputo local máximo, $\tsub{idle}$, $\tsub{gather}$ y el voto con \texttt{MPI.Wtime} y barreras, y escribe un CSV.
+\end{itemize}
+\textbf{Validación} (\texttt{tests/validate\_knn.py}):
+\begin{itemize}
+\item Partición simulada y referencias (49 comprobaciones): la partición en bloques para $p=1,\dots,17$, 32 y 64 reproduce las 360 predicciones originales, incluidas las 7 consultas con empate de distancia; \texttt{majority\_vote} equivale a \texttt{Counter.most\_common}; el kernel GEMM coincide con la fórmula directa; y sklearn \cite{sklearn} no difiere en ninguna consulta.
+\item MPI real (80 comprobaciones): beta2 y las cuatro variantes de beta3 (DAG o réplica, con buffers o pickle) coinciden con beta1 para $p\in\{1,2,3,4,5,7,8,16\}$, en \texttt{load\_digits} y con $\ntr=5003$ (no divisible).
+\end{itemize}
+Todas se ejecutaron en Khipu (job 64269): \textbf{129/129} comprobaciones correctas.
+
+\textbf{Exactitud del kernel GEMM.} Que $\|q\|^2+\|x\|^2-2\,q\cdot x$ coincida bit a bit con la fórmula directa no es una propiedad general del GEMM: depende de los datos. Los píxeles son enteros en $[0,16]$ y $d=64$, así que $\|q\|^2$, $\|x\|^2$ y $q\cdot x$ son enteros de a lo sumo $64\cdot16^2=16\,384<2^{53}$. Float64 los representa sin error, de modo que no hay redondeo y las distancias, los empates y las predicciones son idénticos. El generador de la Sec.~\ref{sec:aug} conserva esa propiedad, porque redondea a enteros en $[0,16]$. Con datos reales arbitrarios no estaría garantizada: el redondeo podría alterar un empate, y habría que usar la fórmula directa o desempatar con una tolerancia.
+
+\subsection{Escalamiento reproducible de los datos}\label{sec:aug}
+\texttt{make\_dataset} genera el entrenamiento solo desde $X_{tr}$ y la prueba solo desde $X_{te}$, sin fuga entre ambos. Las primeras muestras son las originales; las demás son copias estratificadas con ruido $\mathcal N(0,\sigma^2)$, redondeadas y recortadas a $[0,16]$, con semilla 2026. Usamos $\sigma=1$ sin desplazamientos. La Tabla~\ref{tab:aug} muestra la verificación del generador en Khipu: la exactitud se mantiene y la media de cada clase se mueve a lo sumo 2.3, frente a una separación mínima entre medias de clase de 21.0 en el $X_{tr}$ original.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Verificación del generador ($\sigma=1$, sin desplazamientos) por factor de aumento.}\label{tab:aug}
+\begin{tabular}{@{}rrrrr@{}}\toprule
+Factor & $\ntr$ & acc. test orig. & acc. test aum. & máx.\,$\|\Delta\mu_c\|$\\\midrule
+1 & 1437 & 0.9833 & 0.9833 & 0.00\\
+2 & 2874 & 0.9833 & 0.9833 & 2.27\\
+4 & 5748 & 0.9778 & 0.9799 & 2.17\\
+8 & 11\,496 & 0.9861 & 0.9806 & 2.13\\\bottomrule
+\end{tabular}
+\end{table}
+
+% =====================================================================
+\section{Resultados y análisis}\label{sec:res}
+\subsection{Entorno}
+\begin{itemize}
+\item \textbf{Hardware:} Khipu, nodo \texttt{n003}, 2$\times$Xeon Gold 6130 (2.10\,GHz, 16 núcleos/socket, 2 hilos/núcleo, 2 nodos NUMA).
+\item \textbf{Software:} Python 3.11, NumPy 2.4.6 (OpenBLAS), scikit-learn 1.9.1, mpi4py 4.1.2, MPICH 5.0.2.
+\item \textbf{Configuración:} un hilo BLAS por proceso; Slurm con \cli{hint=nomultithread}; cada proceso fijado a un núcleo con \texttt{mpiexec -bind-to core}.
+\item \textbf{Cuota:} la cuenta pregrado permite 32 CPU lógicas, es decir 16 núcleos físicos; por eso $p\le16$. $p=24$ y 32 se midieron aparte con hyper-threading.
+\item \textbf{Medición:} 5 repeticiones (3 en la comparación de variantes y en la fórmula directa) más una de calentamiento (media $\pm$ desviación estándar). Tiempo de reloj (\texttt{MPI.Wtime}) entre barreras. U6.2 define el tiempo real como $T_{\mathrm{user}}+T_{\mathrm{system}}$ \cite{fiestasU6}; no lo medimos por separado, y el tiempo de reloj además incluye las esperas.
+\end{itemize}
+Series: \emph{digits} ($1437\times360$); \emph{Fuerte 23k} ($\ntr=22\,992$, $\nte=3600$); \emph{Fuerte 92k} ($\ntr=91\,968$, $\nte=3600$); \emph{Débil} ($\ntr=11\,496\,p$); variantes; y \emph{fórmula directa} ($\ntr=11\,496$, $\nte=1800$).
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{tiempos_vs_p}
+\caption{$\tsub{total}$, $\tsub{comp}$ y $\tsub{comm}$ frente a $p$ (media $\pm\sigma$, 5 repeticiones), con el modelo normalizado (Ec.~\eqref{eq:tp}) y el modelo extendido con $\varphi(p)$ (Sec.~\ref{sec:modelo}). Los recuadros indican $p^*$ teórico (Ec.~\eqref{eq:pstar}), $p^*$ observado y $R^2$ del modelo extendido.}
+\label{fig:tiempos}
+\end{figure}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Escalabilidad fuerte ($S=T_1/T_p$, con $T_1$ = beta3 con $p=1$). Las series siguen el orden de las Figs.~\ref{fig:tiempos} y~\ref{fig:desglose}. Con $T_s$ = beta1 vectorizado (7.251\,s), $S(16)=6.65$ en 92k.}\label{tab:strong}
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{@{}r|rrrr|rrrr|rrrr@{}}\toprule
+& \multicolumn{4}{c|}{digits} & \multicolumn{4}{c|}{Fuerte 23k} & \multicolumn{4}{c}{Fuerte 92k}\\
+$p$ & $T_p$ [ms] & $\tsub{comm}$ [ms] & $S$ & $E$ & $T_p$ [s] & $\tsub{comm}$ [ms] & $S$ & $E$ & $T_p$ [s] & $\tsub{comm}$ [ms] & $S$ & $E$\\\midrule
+1 & 9.75 & 0.26 & 1.00 & 1.00 & 1.684 & 3.7 & 1.00 & 1.00 & 7.208 & 19.3 & 1.00 & 1.00\\
+2 & 7.02 & 0.27 & 1.39 & 0.69 & 0.958 & 4.2 & 1.76 & 0.88 & 3.793 & 13.7 & 1.90 & 0.95\\
+4 & 4.88 & 0.35 & 2.00 & 0.50 & 0.618 & 4.5 & 2.72 & 0.68 & 2.394 & 9.9 & 3.01 & 0.75\\
+6 & 4.47 & 0.42 & 2.18 & 0.36 & 0.566 & 6.2 & 2.97 & 0.50 & 2.139 & 10.1 & 3.37 & 0.56\\
+8 & 3.73 & 0.74 & 2.61 & 0.33 & 0.550 & 5.5 & 3.06 & 0.38 & 2.134 & 10.6 & 3.38 & 0.42\\
+12 & 3.40 & 0.93 & 2.87 & 0.24 & 0.390 & 5.8 & 4.31 & 0.36 & 1.449 & 14.6 & 4.98 & 0.41\\
+16 & 3.74 & 1.00 & 2.61 & 0.16 & 0.299 & 7.3 & 5.63 & 0.35 & 1.091 & 11.5 & 6.61 & 0.41\\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Tiempos de ejecución, cómputo y comunicación}
+La Fig.~\ref{fig:tiempos}, la Tabla~\ref{tab:strong} y la Fig.~\ref{fig:desglose} muestran cómo se reparte el tiempo entre cómputo y comunicación; destacan cuatro observaciones:
+\begin{enumerate}
+\item En \emph{digits} la comunicación pasa del 3\,\% al 27\,\% de $\tsub{total}$, y el tiempo deja de bajar cerca de $p=8$--12: con unos 10\,ms de trabajo, el overhead domina.
+\item En los conjuntos grandes la comunicación es, para todo $p$, a lo sumo el 1.1\,\% del total en 92k y el 2.5\,\% en 23k. Aun así, el speedup se aleja del ideal porque el propio cómputo local no escala linealmente (Sec.~\ref{sec:modelo}).
+\item $\tsub{idle}\le8$\,ms: el reparto con resto produce un desbalance despreciable.
+\item Vectorizar (beta1 \texttt{vector}) reduce el tiempo secuencial de digits de 1.988\,s a 12.7\,ms, una mejora de $156\times$.
+\end{enumerate}
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{desglose}
+\caption{Desglose porcentual de $\tsub{total}$ por componente. En los conjuntos grandes domina el cómputo local; en \texttt{load\_digits} la fusión y las colectivas crecen con $p$.}
+\label{fig:desglose}
+\end{figure}
+
+\subsection{Validación de cada colectiva (U6.1, U2.4)}\label{sec:colectivas}
+La Fig.~\ref{fig:colectivas} contrasta cada colectiva con su forma del curso:
+\begin{itemize}
+\item \textbf{Bcast} crece como $\log_2p$: 0.77, 1.43 y 2.28\,ms con $p=2,4,16$ en 92k ($R^2=0.80$).
+\item \textbf{Gather} crece linealmente, de 0.43 a 3.52\,ms ($R^2=0.92$).
+\item \textbf{Scatter} depende del término de bytes: en la serie débil ($m\propto p$) crece de 3.1 a 12.5\,ms entre $p=2$ y 16 ($R^2=0.80$). En la fuerte 92k, en cambio, \emph{baja} de 12.6 a 5.7\,ms, mientras la forma del curso predice un leve aumento: es la discrepancia más clara de la figura.
+\end{itemize}
+El ajuste no es exacto ($R^2$ entre 0.80 y 0.92). No medimos qué algoritmo interno usa MPICH en cada colectiva, así que solo contrastamos la forma funcional del curso. El crecimiento del Scatter con $m$ corresponde al $O(\alpha p+\beta m)$ de U2.4 \cite{fiestasU24}. Para la bajada en 92k hay una explicación posible, que no verificamos: dentro de un nodo, MPICH usa memoria compartida y cada receptor puede copiar su bloque en paralelo, de modo que la raíz no envía los bloques uno tras otro como supone la fórmula de U6.1. En Bcast y Gather, el mensaje solo depende de $\nte$, así que las tres series con $\nte=3600$ comparten la misma curva teórica (línea gris).
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{validacion_colectivas}
+\caption{Tiempo medido de cada colectiva (marcadores) y ajuste NNLS de su forma teórica del curso (líneas), para $p=2,\dots,16$ y las cuatro series.}
+\label{fig:colectivas}
+\end{figure}
+
+\subsection{Normalización y factor de contención}\label{sec:modelo}
+\textbf{Modelo FLOP.} El ajuste de la Sec.~\ref{sec:norm} da $c_1=4.27\times10^{-10}$\,s, $c_2=1.21\times10^{-7}$\,s, $\alpha=6.5\,\mu$s y $\beta=1.30\times10^{-10}$\,s/B ($1/\beta=7.7$\,GB/s). Reproduce $\tsub{comm}$, pero sobrestima la ganancia del cómputo: $R^2=0.29$, 0.61 y 0.77 en digits, 23k y 92k.
+
+\textbf{Causa medida.} En la serie débil cada proceso hace el mismo trabajo, y aun así su cómputo se vuelve más lento:
+\[
+\varphi(p)=\tfrac{\tsub{comp}(p)}{\tsub{comp}(1)}=1.00,\ 1.13,\ 1.45,\ 1.91,\ 2.50,\ 2.52,\ 2.52
+\]
+para $p=1,2,4,6,8,12,16$, mientras $\tsub{comm}\le0.019$\,s. Un diagnóstico sin comunicación de datos (job 64273, nodo \texttt{n004}, un núcleo por proceso) muestra que con 16 procesos el GEMM tarda $2.12\times$ más por proceso y el top-$k$ $1.76\times$ más. El límite es entonces la \emph{contención de recursos compartidos del nodo}, no MPI. U6.4 anticipa dos causas posibles: la frecuencia (potencia $\propto f^3$) y la memoria, ``el mayor cuello de botella'' \cite{fiestasU64}. No medimos contadores de hardware, así que no determinamos cuál de las dos domina.
+
+\textbf{Modelo extendido.} Sustituimos $A/p$ por $A\varphi(p)/p$, con $\varphi$ medido en la serie débil, independiente de las series fuertes. Re-ajustamos $c_1'=3.21\times10^{-10}$\,s, que equivale a $3/c_1'=9.3$\,GFLOP/s por núcleo, coherente con los 8.8--9.4\,GFLOP/s medidos con $p=1$ en las series 23k, 92k y débil, y dentro del rango de 4--12\,GFLOP/s por núcleo que da U2.1 \cite{fiestasU2}. El ajuste sube a $R^2=0.926$, 0.999 y 0.993, con error medio de 9.6\,\%, 2.8\,\% y 1.8\,\%.
+
+\textbf{Ajuste frente a predicción.} Un buen $R^2$ dentro de la muestra no prueba que el modelo prediga datos nuevos. Por eso lo validamos fuera de muestra (Tabla~\ref{tab:loo}, \texttt{analysis/validacion\_cruzada.py}). Para cada serie fuerte, reajustamos $c_1'$ y $c_2$ solo con las otras dos y predecimos $\tsub{total}$ de la serie excluida, con $\alpha$, $\beta$ y $\varphi$ fijos, porque ninguno de ellos usa el $\tsub{comp}$ de esa serie. En 23k y 92k la predicción conserva la calidad del ajuste ($R^2\ge0.994$, error $\le3.6$\,\%), y $c_1'$ apenas cambia (3.17--3.21$\times10^{-10}$\,s). En digits empeora ($R^2=0.66$, error de 25\,\%): con unos 10\,ms de trabajo dominan los overheads que el modelo no describe. La serie débil no sirve para validar el modelo extendido, porque de ella sale $\varphi$; sí sirve para el modelo FLOP, y ahí falla fuera de muestra ($R^2=-0.59$), que es justamente lo que motivó introducir $\varphi$.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Validación fuera de muestra del modelo extendido: se ajusta con dos series fuertes y se predice la tercera.}\label{tab:loo}
+\begin{tabular}{@{}lccc@{}}\toprule
+Serie excluida del ajuste & $c_1'$ [s] & $R^2$ de la predicción & Error relativo medio\\\midrule
+digits & $3.19\times10^{-10}$ & 0.658 & 25.2\,\%\\
+Fuerte 23k & $3.17\times10^{-10}$ & 0.998 & 3.6\,\%\\
+Fuerte 92k & $3.21\times10^{-10}$ & 0.994 & 1.8\,\%\\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Cantidad óptima de procesos}
+La Ec.~\eqref{eq:pstar} da $p^*_{\mathrm{teo}}=8.8$, 39.9 y 79.9:
+\begin{itemize}
+\item \emph{digits:} el mínimo medido está en $p=12$ (3.40\,ms), pero $T(8)$, $T(12)$ y $T(16)$ coinciden dentro de $1\sigma$. Esa meseta concuerda con $p^*_{\mathrm{teo}}=8.8$.
+\item \emph{23k y 92k:} $p^*_{\mathrm{teo}}$ supera los 16 núcleos disponibles y el tiempo sigue bajando hasta $p=16$. Por $\varphi(p)$, con $p=16$ la eficiencia es 0.35 en 23k y 0.41 en 92k.
+\item \emph{Hyper-threading:} con $p=32$ en 16 núcleos, 92k tarda 1.208\,s, más que los 1.091\,s con $p=16$ físicos (Fig.~\ref{fig:speedup}). No conviene usar dos procesos por núcleo físico (SMT).
+\item \emph{Con el modelo extendido} (Sec.~\ref{sec:modelo}): dentro del rango medido ($p\le16$), su mínimo está en $p=16$ en las tres series. Como $\varphi$ se satura en 2.52 desde $p=8$, suponer $\varphi$ constante equivale a reemplazar $A$ por $2.52\,A$ en la Ec.~\eqref{eq:pstar}, lo que da $p^*_{\mathrm{ext}}=17.2$, 89.9 y 180. En digits ese valor queda apenas por encima de 16, y el modelo extendido varía solo un 5\,\% entre $p=12$ y 16 (3.55 y 3.36\,ms), lo que es compatible con la meseta medida. En 23k y 92k es una extrapolación: supera los 32 núcleos del nodo, y fuera de él $\varphi$ no está medido.
+\end{itemize}
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{speedup_eficiencia}
+\caption{Speedup y eficiencia (escalabilidad fuerte). Bandas: $\pm\sigma$ propagada de las 5 repeticiones, nula en $p=1$ porque ahí $S=1$ por definición. Solo se distingue en digits, porque sus tiempos de milisegundos varían más en términos relativos; en 23k y 92k queda bajo la línea. Marcadores huecos: hyper-threading con 2 procesos por núcleo ($p=16$ ocupa 8 núcleos y $p=32$, los 16).}
+\label{fig:speedup}
+\end{figure}
+
+\subsection{Speedup, eficiencia y FLOP/s}
+La Fig.~\ref{fig:speedup} resume el speedup y la eficiencia, y la Fig.~\ref{fig:flops} el rendimiento algorítmico equivalente en GFLOP/s:
+\begin{itemize}
+\item \emph{Fuerte 92k} ($6.36\times10^{10}$ FLOP): de 8.8 a 58.3\,GFLOP/s.
+\item \emph{Fuerte 23k:} de 9.4 a 53.1\,GFLOP/s.
+\item \emph{Fórmula directa:} escala mejor que el GEMM ($S(16)=9.13$, $E=0.57$), aunque su rendimiento absoluto es $8\times$ menor (0.81 a 7.41\,GFLOP/s).
+\end{itemize}
+El enunciado pide los FLOP de la región paralelizable, a la que llama \emph{entrenamiento}. KNN no construye un modelo (Sec.~1), así que esa región es el cálculo de las distancias de cada consulta contra el conjunto de entrenamiento: $\ntr\nte$ distancias de $3d$ FLOP cada una, es decir, FLOP $=3d\,\ntr\nte$. Las FLOP reportadas son las del algoritmo (fórmula), no operaciones de hardware medidas. Por eso hablamos de \emph{rendimiento algorítmico equivalente}. El kernel GEMM obtiene la misma distancia exacta con otra secuencia de operaciones: unas $2d$ por par, del producto $q\cdot x$, más las normas, que se amortizan. Su rendimiento de hardware sería, por tanto, del orden de 2/3 del reportado. La serie con la fórmula directa sí ejecuta la secuencia de la fórmula: $3d-1$ operaciones por par, sin la raíz, que no hace falta para ordenar. Como en U6.2, todas las operaciones cuentan igual; a diferencia de su definición de MFLOPS, que divide por $T_{\mathrm{CPU}}$, dividimos por el tiempo de reloj $\tsub{total}$ \cite{fiestasU6}.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=0.75\textwidth]{gflops_vs_p}
+\caption{Rendimiento algorítmico \emph{equivalente} frente a $p$: FLOP $=3d\,\ntr\nte$ (región paralelizable, el ``entrenamiento'' del enunciado) divididas entre $\tsub{total}$. No son FLOP de hardware medidas: el kernel GEMM ejecuta del orden de 2/3 de ellas.}
+\label{fig:flops}
+\end{figure}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Fuerte 92k con las métricas de U2.1/U6.2 \cite{fiestasU2,fiestasU6}: $T_0=pT_p-W$ ($W\equiv T_1$), $f_s$ despejada de Amdahl $S=1/(f_s+(1-f_s)/p)$ y energía relativa $CE=pP_nT_p$.}\label{tab:u62}
+\begin{tabular}{@{}r|rrrrrrr@{}}\toprule
+$p$ & $T_p$ [s] & $S$ & $E$ & $\Delta T/\Delta p$ [s] & $T_0/W$ & $f_s$ (Amdahl) & $CE/CE_1$\\\midrule
+1 & 7.208 & 1.00 & 1.00 & -- & 0.00 & -- & 1.00\\
+2 & 3.793 & 1.90 & 0.95 & $-3.414$ & 0.05 & 0.053 & 1.05\\
+4 & 2.394 & 3.01 & 0.75 & $-0.700$ & 0.33 & 0.109 & 1.33\\
+6 & 2.139 & 3.37 & 0.56 & $-0.127$ & 0.78 & 0.156 & 1.78\\
+8 & 2.134 & 3.38 & 0.42 & $-0.002$ & 1.37 & 0.196 & 2.37\\
+12 & 1.449 & 4.98 & 0.41 & $-0.171$ & 1.41 & 0.128 & 2.41\\
+16 & 1.091 & 6.61 & 0.41 & $-0.089$ & 1.42 & 0.095 & 2.42\\\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Métricas de escalabilidad del curso (U2.1, U6.2)}
+La Tabla~\ref{tab:u62} aplica a la serie Fuerte 92k las métricas de escalabilidad de U2.1 y U6.2; de ella se desprenden las siguientes observaciones:
+\begin{itemize}
+\item \textbf{Consistencia:} $E=1/(1+T_0/W)$ se cumple. Con $p=16$, $1/(1+1.42)=0.413$, igual a la $E$ medida.
+\item \textbf{$\Delta T/\Delta p$:} pasar de 6 a 8 procesos ahorra solo 0.002\,s por proceso agregado; de 8 a 16 vuelve a bajar 0.09--0.17\,s. En digits, a partir del paso de 4 a 6 procesos, $|\Delta T/\Delta p|<0.4$\,ms.
+\item \textbf{Amdahl:} la $f_s$ despejada varía entre 0.05 y 0.20, así que no existe una fracción secuencial fija. La pérdida es $\varphi(p)$, un costo que crece con $p$; U6.2 advierte justamente que Amdahl y Gustafson no la describen satisfactoriamente.
+\item \textbf{Gustafson:} calculamos el \emph{speedup escalado empírico} con la serie \emph{débil}, no con esta tabla: $S_G=p\,T_1(n_1)/T_p(p\,n_1)=p\,E_{\text{débil}}=16\times0.393=6.28$ con $p=16$ (Sec.~\ref{sec:weak}). No es la fórmula $S=f_s+p\,f_p$ de U2.1, que supone una fracción secuencial fija, y esa fracción aquí no existe. Con la $E$ de la serie fuerte, $pE$ es simplemente $S=6.61$, porque $E=S/p$. Que ambos valores sean cercanos indica que los dos están limitados por $\varphi(p)$.
+\item \textbf{Energía:} con $p=16$ se consume $2.42\times$ la energía de $p=1$ (suponiendo potencia por núcleo constante), a cambio de ir $6.6\times$ más rápido.
+\end{itemize}
+
+\subsection{Escalabilidad con tamaño variable del problema}\label{sec:weak}
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{escalabilidad_debil}
+\caption{Escalabilidad débil ($\ntr=11\,496\,p$, de 11\,496 a 183\,936; $\nte=3600$). La eficiencia débil sigue a $1/\varphi(p)$ porque la comunicación es $<1$\,\%.}
+\label{fig:weak}
+\end{figure}
+En la serie débil (Fig.~\ref{fig:weak}), $T_p$ pasa de 0.844 a 2.148\,s ($E_{\text{débil}}(16)=0.39$). La pérdida coincide con el aumento del cómputo por proceso, de 0.842 a 2.129\,s con trabajo local constante, y no con la comunicación, de 0.002 a 0.019\,s. Por construcción, $\varphi$ es ese cociente; que no proviene de MPI lo confirma el diagnóstico sin comunicación.
+
+Algorítmicamente el método es escalable: $\tsub{comm}$ crece como $O(p)$ en arranques y $O(\ntr)$ en bytes, mientras $W\propto\ntr\nte$. Las condiciones de isoeficiencia del modelo teórico ($\ntr=\Omega(p^2/d)$, $\nte=\Omega(p)$) son asintóticas, así que no se \emph{verifican} con una serie finita. Lo que sí muestran las mediciones es que, en el rango medido, el término de overhead que esas condiciones controlan es pequeño: la comunicación no supera el 1\,\% del tiempo en la serie débil y el 1.1\,\% en 92k. Esto indica que el \emph{overhead} del algoritmo (comunicación y fusión) no es lo que degrada la eficiencia, pero no garantiza que la eficiencia medida sea constante: el modelo no incluye la contención del hardware. Con $p$ fijo, el tiempo crece linealmente con el trabajo: las pendientes log-log son 1.05, 0.98 y 0.95 para $p=1,4,16$ (Fig.~\ref{fig:N}).
+
+Hay que distinguir, sin embargo, dos cosas. El comportamiento \emph{asintótico} del algoritmo es favorable. La escalabilidad \emph{experimental} en Khipu es limitada: con trabajo por proceso constante, la eficiencia débil cae a 0.39 con $p=16$. La causa es el hardware del nodo ($\varphi$), no el algoritmo ni MPI.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=0.75\textwidth]{tiempo_vs_N}
+\caption{$\tsub{total}$ frente al trabajo. Las pendientes se ajustan en escala log-log sobre los puntos con FLOP $\ge10^{10}$: 2 puntos para $p=1$ y 3 para $p=4$ y 16.}
+\label{fig:N}
+\end{figure}
+
+\subsection{Exactitud del modelo}
+La exactitud es idéntica bit a bit para todo $p$ con un conjunto de datos fijo (Fig.~\ref{fig:acc}, izq.). Con el conjunto aumentado ($\nte=3600$) se mantiene en 0.9800--0.9828 para $\ntr$ de 11\,496 a 183\,936, frente a 0.9833 en \texttt{load\_digits} ($\nte=360$, otro conjunto de prueba).
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{accuracy}
+\caption{Exactitud. Izq.: invariancia respecto a $p$ con datos fijos. Der.: frente a $\ntr$, con una corrida por tamaño: $p=1$ para 11\,496, 22\,992 y 91\,968, y la serie débil ($p=4$, 6, 12 y 16) para el resto. Es equivalente, porque la exactitud no depende de $p$ (panel izq.). Solo se unen los puntos con el mismo conjunto de prueba ($\nte=3600$), y \texttt{load\_digits} ($\nte=360$) aparece como referencia.}
+\label{fig:acc}
+\end{figure}
+
+\subsection{Comparación de descomposiciones}\label{sec:variantes}
+Con $p=16$ y $\ntr=91\,968$ (Fig.~\ref{fig:var}):
+\begin{itemize}
+\item \emph{DAG con buffers (versión final):} $\tsub{comm}=11.5$\,ms y $\tsub{total}=1.091$\,s.
+\item \emph{Comunicación por objetos pickle:} $\tsub{comm}=53.2$\,ms y $\tsub{total}=1.132$\,s.
+\item \emph{Variante alternativa (réplica de $X_{tr}$):} $\tsub{comm}=53.6$\,ms y $\tsub{total}=1.184$\,s.
+\end{itemize}
+La variante del DAG comunica $4.7\times$ menos. La descomposición alternativa difunde $X_{tr}$ completo (47\,MB) a cada proceso, y su memoria total crece con $p\,\ntr$. El DAG difunde solo $X_{te}$ (1.8\,MB), por lo que es la descomposición adecuada cuando $\ntr\gg\nte$. Las mediciones confirman la forma de la Sec.~\ref{sec:comprep}: el Bcast de $X_{tr}$ es al menos el 97\,\% del $\tsub{comm}$ de la variante y crece de 32.0 a 44.4 y 52.7\,ms con $p=4$, 8 y 16. Con el $\beta$ ajustado en las series del DAG, la Ec.~\eqref{eq:repbc} predice 12.5, 18.7 y 25.0\,ms: acierta en que el Bcast domina y crece con $p$, pero subestima su magnitud entre 2.1 y 2.6 veces para este mensaje de 47.8\,MB, y el crecimiento medido es algo más lento que $\log_2p$. El Scatter de $X_{te}$ (0.6--0.8\,ms) y el Gather de $\hat y$ ($<0.1$\,ms) son despreciables, como predice el modelo.
+
+Los trabajos de KNN paralelo de Aparício, Blanquer y Hernández \cite{aparicio2007} y de Patwary et al.\ \cite{patwary2016} dan contexto a esta comparación. El primero paraleliza la clasificación de las consultas en tres niveles (hilos, procesos MPI y grid). El segundo (PANDA) distribuye el conjunto de referencia entre nodos para escalar a datos masivos. Nuestras mediciones muestran el mismo criterio a pequeña escala: cuando $\ntr\gg\nte$, conviene repartir el conjunto de entrenamiento y no replicarlo.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{comparacion_variantes}
+\caption{Comparación de descomposiciones con $\ntr=91\,968$. Izq.: tiempo total. Der.: comunicación.}
+\label{fig:var}
+\end{figure}
+
+\subsection{Discusión y mejoras propuestas}\label{sec:mejoras}
+\begin{enumerate}
+\item \textbf{Contención intra-nodo} ($\varphi(16)=2.5$), el cuello de botella real. Se puede reducir de tres formas:
+  \begin{itemize}
+  \item más nodos con menos procesos por nodo;
+  \item usar \texttt{float32}, exacto aquí porque $d\cdot256<2^{24}$, junto con bloques que quepan en caché, lo que reduce el tráfico de memoria;
+  \item fusionar el cálculo de distancias con la selección para no materializar la matriz $\nte\times n_r$ (Numba o C).
+  \end{itemize}
+\item \textbf{Reducción en árbol del top-$k$ (U6.1).} El min-$k$ es asociativo, así que una \texttt{MPI\_Reduce} con operador propio cuesta $\log p(\alpha+3k\nte\beta)$, en lugar de $O(p)$ más la fusión en $P_0$. Es la ``reducción $(n>p)$'' de U6.1.
+\item \textbf{No bloqueante (U3.3).} \texttt{Iscatterv}/\texttt{Ibcast} solaparían comunicación y cómputo, pero la ganancia está acotada por $\tsub{comm}/\tsub{total}$, que es $\le1.1$\,\% en 92k y $\le2.5$\,\% en 23k.
+\item \textbf{Híbrido MPI+OpenMP (U4.5).} Menos procesos con varios hilos BLAS reducen el Gather y la fusión, aunque no eliminan $\varphi(p)$.
+\item \textbf{GPU (U6.4).} El GEMM de distancias es ideal para GPU (\texttt{sinfo} en Khipu lista GPU A100, RTX A6000 y Tesla). Hay que amortizar la transferencia host$\to$device de unos 49\,MB.
+\item \textbf{2D (U6.3, Fox/Cannon/DNS).} Con $\nte$ y $\ntr$ grandes, una malla $\sqrt p\times\sqrt p$ reduce la difusión de $X_{te}$ a $\nte d/\sqrt p$ por proceso.
+\item \textbf{Ubicación de procesos.} \texttt{-map-by socket} amontonó procesos en un mismo núcleo dentro del cpuset de Slurm, así que esas mediciones se descartan.
+\item \textbf{Problemas pequeños.} En digits, más allá de $p\approx8$ no hay ganancia ($E<0.35$).
+\end{enumerate}
+
+% =====================================================================
+\section{Conclusiones}
+\begin{itemize}
+\item El KNN distribuido según el DAG es correcto: reproduce exactamente al secuencial para todo $p$.
+\item Es algorítmicamente escalable: la comunicación es a lo sumo el 1.1\,\% del total en 92k y el 2.5\,\% en 23k. Las colectivas siguen en general la forma de U6.1 ($R^2$ de 0.80 a 0.92); la excepción es el Scatter de 92k, que baja al aumentar $p$ (Sec.~\ref{sec:colectivas}). Experimentalmente, en un nodo de Khipu, la escalabilidad es limitada: la eficiencia débil es 0.39 con $p=16$.
+\item En Khipu alcanza $S=6.61$ y 58.3\,GFLOP/s equivalentes (FLOP del algoritmo) con 16 núcleos.
+\item La brecha frente al ideal se explica cuantitativamente con un factor de contención intra-nodo medido, $\varphi(p)$. Con él, el modelo normalizado del curso se ajusta con error de 1.8--2.8\,\% en los conjuntos grandes y, validado fuera de muestra, predice cada serie grande a partir de las otras con error de 1.8--3.6\,\%.
+\end{itemize}
+
+% =====================================================================
+\section{Bibliografía y uso de fuentes externas}
+\subsection{Material del curso}
+Las diapositivas del curso \cite{fiestasU1b,fiestasU1,fiestasU2,fiestasU24,fiestasU3,fiestasU6,fiestasU63,fiestasU64} fijan la notación y las fórmulas en que se basan las derivaciones de la Sec.~2 y las métricas de la Sec.~3. Por unidad:
+\begin{multicols}{2}
+\begin{itemize}\setlength{\itemsep}{0pt}
+\item U1.2: Foster y Flynn.
+\item U1.3: DAG, trabajo y span.
+\item U2.1: $S$, $E$, Amdahl/Gustafson y FLOP.
+\item U2.2--2.3: PRAM, \texttt{pardo} y Brent.
+\item U2.4: particionamiento de datos.
+\item U3.1--3.4: colectivas MPI y comunicación no bloqueante.
+\item U4.5: paralelismo híbrido.
+\item U6.1: Bcast, Scatter/Gather y reducción.
+\item U6.2: MFLOPS, $T_0$, isoeficiencia, $\Delta T/\Delta p$ y energía.
+\item U6.3: matrices por bloques y métodos 2D.
+\item U6.4: frecuencia, memoria y GPU.
+\end{itemize}
+\end{multicols}
+\subsection{Literatura científica y documentación técnica}
+Cada fuente se usó para una decisión concreta del proyecto:
+\begin{itemize}\setlength{\itemsep}{1pt}
+\item \textbf{Fix y Hodges \cite{fix1951}, Cover y Hart \cite{cover1967}:} definen KNN y muestran que todo el costo está en la inferencia; por eso la región paralelizable son las $\nte\ntr$ distancias (Sec.~1).
+\item \textbf{Enunciado \cite{enunciado}:} fija el código secuencial de partida, el DAG que seguimos (Fig.~\ref{fig:dag}) y las preguntas a)--e) que estructuran la Sec.~3.
+\item \textbf{JáJá \cite{jaja} y Brent \cite{brent}:} dan el modelo PRAM CREW, la notación \texttt{pardo} y la cota de Brent con la que obtenemos $T_p^{\mathrm{comp}}$ (Sec.~\ref{sec:wspan}).
+\item \textbf{Foster \cite{foster}:} la metodología PCAM con la que diseñamos el particionamiento y la aglomeración (Sec.~2.2).
+\item \textbf{Thakur, Rabenseifner y Gropp \cite{thakur2005}:} describen cómo MPICH, la biblioteca que usamos, implementa las colectivas con distintos algoritmos; por eso tratamos las fórmulas de U6.1 como forma funcional ajustada a las mediciones y no como el algoritmo exacto (Sec.~\ref{sec:colectivas}).
+\item \textbf{Aparício, Blanquer y Hernández \cite{aparicio2007}, Patwary et al. \cite{patwary2016}:} trabajos de KNN paralelo que dan contexto a las dos descomposiciones que comparamos (Sec.~\ref{sec:variantes}).
+\item \textbf{scikit-learn \cite{sklearn} y UCI \cite{uci}:} origen de \texttt{load\_digits}; además, el clasificador de scikit-learn sirvió como verificación independiente (0 consultas distintas, Sec.~2.10).
+\item \textbf{NumPy \cite{numpy} y mpi4py \cite{mpi4py}:} el kernel GEMM y \texttt{argpartition} de beta1 y beta3, y la semántica de las colectivas por objetos (beta2) y por buffers (beta3).
+\item \textbf{Documentación de Khipu \cite{khipu}:} particiones, módulos y Slurm para los jobs; los límites de la cuenta y el hardware se verificaron con \texttt{lscpu}, \texttt{sinfo}, \texttt{scontrol} y \texttt{myaccount}.
+\end{itemize}
+
+\subsection{Uso de herramientas de asistencia y modelos de lenguaje}
+En cumplimiento de las pautas académicas del curso, se declara el uso del modelo de lenguaje Claude~\cite{claude}, a través del entorno Claude Code, como herramienta de apoyo en aspectos específicos del trabajo (Tabla~\ref{tab:ia}).
+
+\begin{table}[H]
+\centering\small
+\caption{Declaración de uso de herramientas de asistencia.}\label{tab:ia}
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{3.1cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X@{}}\toprule
+\textbf{Ámbito de uso} & \textbf{Aporte} & \textbf{Control y verificación}\\\midrule
+Revisión analítica & Sugerencias sobre la formulación del modelo $T_p=A/p+Bp+C\log_2p+D$, la cantidad óptima de procesos $p^*$, la isoeficiencia y la separación entre la cota de Brent y el costo de la fusión en $P_0$. & Las deducciones de las Ecs.~\eqref{eq:work}--\eqref{eq:pstar} se verificaron analíticamente a mano frente a las fórmulas de U2.2, U6.1 y U6.2 \cite{fiestasU2,fiestasU6}.\\\addlinespace
+Búsqueda bibliográfica & Orientación hacia referencias clásicas de colectivas MPI y paralelización de KNN (Thakur, Rabenseifner y Gropp \cite{thakur2005}; Aparício, Blanquer y Hernández \cite{aparicio2007}; Patwary et al.\ \cite{patwary2016}). & Se consultó y comprobó directamente la pertinencia técnica y los datos bibliográficos de cada publicación en sus repositorios oficiales.\\\addlinespace
+Estructuración en \LaTeX & Ajustes de sintaxis en pseudocódigos (\texttt{algorithm2e}), tablas, el DAG en TikZ y la presentación en Beamer. & Compilación local y verificación del contenido matemático y descriptivo por parte de los autores.\\\addlinespace
+Verificación de coherencia y resultados de cálculo & Cotejo cruzado de las cifras del informe y de la presentación ($T_p$, $S$, $E$, GFLOP/s, $\varphi(p)$) con los CSV de Khipu, y detección de inconsistencias entre ecuaciones (p.\,ej., términos faltantes en la eficiencia de la Sec.~\ref{sec:u63}). & Las tablas se regeneraron con \texttt{analysis/analyze.py} a partir de los CSV crudos, y las predicciones se validaron con \texttt{tests/validate\_knn.py} (129/129 en Khipu, job 64269).\\\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Impacto en el proyecto.} La herramienta agilizó la revisión de las derivaciones, la búsqueda de referencias, la maquetación y el control de coherencia entre documentos. Todas las mediciones provienen de los jobs de Khipu, y las decisiones de diseño, los resultados y su interpretación son responsabilidad de los autores.
+
+\begin{thebibliography}{99}\small
+\bibitem{fix1951} E.~Fix and J.~L.~Hodges, ``Discriminatory analysis: Nonparametric discrimination, consistency properties,'' USAF School of Aviation Medicine, Tech. Rep.~4, 1951.
+\bibitem{cover1967} T.~M.~Cover and P.~E.~Hart, ``Nearest neighbor pattern classification,'' \emph{IEEE Trans. Inf. Theory}, vol.~13, no.~1, pp.~21--27, 1967, doi:10.1109/TIT.1967.1053964.
+\bibitem{sklearn} F.~Pedregosa \emph{et al.}, ``Scikit-learn: Machine learning in Python,'' \emph{JMLR}, vol.~12, pp.~2825--2830, 2011.
+\bibitem{uci} E.~Alpaydin and C.~Kaynak, ``Optical recognition of handwritten digits,'' UCI ML Repository, 1998, doi:10.24432/C50P49.
+\bibitem{numpy} C.~R.~Harris \emph{et al.}, ``Array programming with NumPy,'' \emph{Nature}, vol.~585, pp.~357--362, 2020, doi:10.1038/s41586-020-2649-2.
+\bibitem{mpi4py} L.~Dalcín, ``MPI for Python (mpi4py),'' \url{https://mpi4py.readthedocs.io/en/stable/}.
+\bibitem{jaja} J.~JáJá, \emph{An Introduction to Parallel Algorithms}. Addison-Wesley, 1992.
+\bibitem{brent} R.~P.~Brent, ``The parallel evaluation of general arithmetic expressions,'' \emph{J. ACM}, vol.~21, no.~2, pp.~201--206, 1974, doi:10.1145/321812.321815.
+\bibitem{thakur2005} R.~Thakur, R.~Rabenseifner, and W.~Gropp, ``Optimization of collective communication operations in MPICH,'' \emph{IJHPCA}, vol.~19, no.~1, pp.~49--66, 2005, doi:10.1177/1094342005051521.
+\bibitem{aparicio2007} G.~Aparício, I.~Blanquer, and V.~Hernández, ``A parallel implementation of the K nearest neighbours classifier in three levels,'' in \emph{VECPAR 2006}, LNCS 4395, pp.~225--235, 2007, doi:10.1007/978-3-540-71351-7\_18.
+\bibitem{patwary2016} M.~M.~A.~Patwary \emph{et al.}, ``PANDA: Extreme scale parallel K-nearest neighbor on distributed architectures,'' in \emph{IPDPS}, 2016, pp.~494--503, doi:10.1109/IPDPS.2016.57.
+\bibitem{foster} I.~Foster, \emph{Designing and Building Parallel Programs}. Addison-Wesley, 1995.
+\bibitem{khipu} UTEC, ``Documentación del clúster Khipu,'' \url{https://docs.khipu.utec.edu.pe/}, consultado 20-11-2026.
+\bibitem{fiestasU1b} J.~Fiestas, ``U1.2: Fundamentos -- Foster y Flynn,'' CS4052, UTEC, 2026.
+\bibitem{fiestasU1} J.~Fiestas, ``U1.3: Fundamentos -- DAG,'' CS4052, UTEC, 2026.
+\bibitem{fiestasU2} J.~Fiestas, ``U2.1--U2.3: Performance y PRAM,'' CS4052, UTEC, 2026.
+\bibitem{fiestasU24} J.~Fiestas, ``U2.4: Particionamiento de datos y tareas,'' CS4052, UTEC, 2026.
+\bibitem{fiestasU3} J.~Fiestas, ``U3.1--U3.4: Paralelismo distribuido -- MPI,'' CS4052, UTEC, 2026.
+\bibitem{fiestasU6} J.~Fiestas, ``U6.1--U6.2: Broadcast y escalabilidad,'' CS4052, UTEC, 2026.
+\bibitem{fiestasU63} J.~Fiestas, ``U6.3: Multiplicación de matrices,'' CS4052, UTEC, 2026.
+\bibitem{fiestasU64} J.~Fiestas, ``U6.4: CUDA,'' CS4052, UTEC, 2026.
+\bibitem{enunciado} J.~Fiestas, ``Proyecto -- Laboratorio CS4052 2026-II, Sec.~5 (KNN),'' UTEC, 2026.
+\bibitem{claude} Anthropic, ``Claude Opus 5.5 (identificador \texttt{claude-opus-5-5}) mediante Claude Code. Modelo de lenguaje de gran escala y entorno agéntico de programación,'' 2026. \url{https://claude.ai} (visitado 20-11-2026).
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,262 @@
+[1795190242.360659] [n003:1158161:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.365765] [n003:1158157:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.380669] [n003:1158156:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.381242] [n003:1158160:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.383386] [n003:1158158:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.383484] [n003:1158159:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.385409] [n003:1158150:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.387024] [n003:1158155:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.387118] [n003:1158151:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.387921] [n003:1158154:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.387979] [n003:1158152:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.388505] [n003:1158163:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.388600] [n003:1158162:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.388706] [n003:1158165:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.389017] [n003:1158153:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190242.389082] [n003:1158164:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=91968,n_test=3600,rep=0,T_total=2.362,T_comp=2.3442,T_comm=0.017496,T_idle=0.040853,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=1,T_total=2.366,T_comp=2.3522,T_comm=0.01384,T_idle=0.00020025,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=2,T_total=2.3326,T_comp=2.3187,T_comm=0.013755,T_idle=0.0068526,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=3,T_total=2.3371,T_comp=2.3232,T_comm=0.013791,T_idle=7.4552e-05,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=4,T_total=2.3539,T_comp=2.3397,T_comm=0.014158,T_idle=0.012341,accuracy=0.98111
+[1795190262.231628] [n003:1158382:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.263033] [n003:1158378:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.264345] [n003:1158386:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.265063] [n003:1158385:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.265202] [n003:1158384:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.275190] [n003:1158379:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.277278] [n003:1158387:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.290858] [n003:1158376:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.290874] [n003:1158377:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.290862] [n003:1158380:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.291062] [n003:1158373:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.291101] [n003:1158372:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.291790] [n003:1158381:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.292991] [n003:1158383:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.302218] [n003:1158374:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190262.302214] [n003:1158375:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=22992,n_test=3600,rep=0,T_total=0.61486,T_comp=0.60426,T_comm=0.010744,T_idle=0.0003018,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=1,T_total=0.61303,T_comp=0.60148,T_comm=0.011503,T_idle=4.1792e-05,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=2,T_total=0.60854,T_comp=0.60132,T_comm=0.0071112,T_idle=0.00084911,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=3,T_total=0.60739,T_comp=0.60022,T_comm=0.0071382,T_idle=3.4985e-05,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=4,T_total=0.6181,T_comp=0.60852,T_comm=0.0094627,T_idle=0.00011578,accuracy=0.98278
+[1795190270.452871] [n003:1158601:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.452866] [n003:1158602:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.470728] [n003:1158610:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.481438] [n003:1158606:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.482735] [n003:1158595:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.483920] [n003:1158609:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.485760] [n003:1158596:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.486038] [n003:1158605:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.486683] [n003:1158607:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.487034] [n003:1158608:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.487333] [n003:1158604:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.487597] [n003:1158600:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.487621] [n003:1158597:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.487613] [n003:1158598:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.488428] [n003:1158599:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190270.488532] [n003:1158603:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=1437,n_test=360,rep=0,T_total=0.0073095,T_comp=0.0044879,T_comm=0.0027684,T_idle=0.00042037,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=1,T_total=0.0073066,T_comp=0.0044264,T_comm=0.0028297,T_idle=0.00017432,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=2,T_total=0.0054816,T_comp=0.0046388,T_comm=0.00076589,T_idle=0.0003259,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=3,T_total=0.0053181,T_comp=0.0045367,T_comm=0.00074241,T_idle=6.7098e-05,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=4,T_total=0.0053612,T_comp=0.0044853,T_comm=0.00083335,T_idle=4.2553e-05,accuracy=0.98333
+[1795190275.216488] [n003:1158813:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.265965] [n003:1158831:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.266553] [n003:1158828:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.266647] [n003:1158832:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.266670] [n003:1158829:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.266891] [n003:1158833:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.274454] [n003:1158827:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.274666] [n003:1158826:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.274698] [n003:1158814:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.282842] [n003:1158817:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.283858] [n003:1158830:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.288930] [n003:1158834:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.289679] [n003:1158835:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.293250] [n003:1158825:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.293568] [n003:1158820:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.293660] [n003:1158821:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.293858] [n003:1158816:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.294285] [n003:1158818:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.294330] [n003:1158824:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.294413] [n003:1158819:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.294546] [n003:1158823:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.294937] [n003:1158822:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.295486] [n003:1158815:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190275.302656] [n003:1158812:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=24,n_train=91968,n_test=3600,rep=0,T_total=1.5925,T_comp=1.572,T_comm=0.020395,T_idle=0.00319,accuracy=0.98111
+p=24,n_train=91968,n_test=3600,rep=1,T_total=1.5865,T_comp=1.5711,T_comm=0.015135,T_idle=0.010913,accuracy=0.98111
+p=24,n_train=91968,n_test=3600,rep=2,T_total=1.586,T_comp=1.5707,T_comm=0.015876,T_idle=0.003701,accuracy=0.98111
+p=24,n_train=91968,n_test=3600,rep=3,T_total=1.5945,T_comp=1.5783,T_comm=0.016244,T_idle=0.014481,accuracy=0.98111
+p=24,n_train=91968,n_test=3600,rep=4,T_total=1.5901,T_comp=1.5746,T_comm=0.015535,T_idle=0.0077404,accuracy=0.98111
+[1795190289.803351] [n003:1159142:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.805433] [n003:1159148:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.805455] [n003:1159146:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.805464] [n003:1159147:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.805532] [n003:1159145:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.809676] [n003:1159138:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.827952] [n003:1159140:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.828237] [n003:1159139:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.837479] [n003:1159126:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.842150] [n003:1159143:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.842731] [n003:1159125:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.842990] [n003:1159144:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.844494] [n003:1159128:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.844672] [n003:1159136:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.844732] [n003:1159135:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.845379] [n003:1159129:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.845571] [n003:1159141:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.845836] [n003:1159127:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.846782] [n003:1159130:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.847342] [n003:1159134:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.847367] [n003:1159132:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.847831] [n003:1159133:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.848714] [n003:1159137:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190289.848808] [n003:1159131:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=24,n_train=22992,n_test=3600,rep=0,T_total=0.42252,T_comp=0.40852,T_comm=0.013877,T_idle=0.00012044,accuracy=0.98278
+p=24,n_train=22992,n_test=3600,rep=1,T_total=0.41579,T_comp=0.4029,T_comm=0.012687,T_idle=0.007094,accuracy=0.98278
+p=24,n_train=22992,n_test=3600,rep=2,T_total=0.41494,T_comp=0.40506,T_comm=0.0099664,T_idle=0.0061642,accuracy=0.98278
+p=24,n_train=22992,n_test=3600,rep=3,T_total=0.41194,T_comp=0.40268,T_comm=0.0094014,T_idle=0.005893,accuracy=0.98278
+p=24,n_train=22992,n_test=3600,rep=4,T_total=0.41245,T_comp=0.40284,T_comm=0.0097913,T_idle=0.0059207,accuracy=0.98278
+[1795190297.109373] [n003:1159462:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.162036] [n003:1159474:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.167212] [n003:1159475:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.181591] [n003:1159471:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.187457] [n003:1159472:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.187479] [n003:1159468:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.188876] [n003:1159469:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.196659] [n003:1159470:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.199899] [n003:1159473:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.204500] [n003:1159455:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.204544] [n003:1159454:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.205158] [n003:1159453:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.205405] [n003:1159458:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.205432] [n003:1159457:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.205669] [n003:1159467:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.206269] [n003:1159461:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.206410] [n003:1159465:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.206893] [n003:1159459:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.206977] [n003:1159456:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.206992] [n003:1159464:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.207233] [n003:1159466:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.207248] [n003:1159463:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.217702] [n003:1159452:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190297.218538] [n003:1159460:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=24,n_train=1437,n_test=360,rep=0,T_total=0.0093526,T_comp=0.0063152,T_comm=0.0029875,T_idle=4.9829e-05,accuracy=0.98333
+p=24,n_train=1437,n_test=360,rep=1,T_total=0.00926,T_comp=0.0063642,T_comm=0.0028648,T_idle=3.1011e-05,accuracy=0.98333
+p=24,n_train=1437,n_test=360,rep=2,T_total=0.0063321,T_comp=0.005139,T_comm=0.0011464,T_idle=0.00026885,accuracy=0.98333
+p=24,n_train=1437,n_test=360,rep=3,T_total=0.0061228,T_comp=0.005002,T_comm=0.0010791,T_idle=6.4095e-05,accuracy=0.98333
+p=24,n_train=1437,n_test=360,rep=4,T_total=0.005546,T_comp=0.0044604,T_comm=0.0010464,T_idle=5.9482e-05,accuracy=0.98333
+[1795190302.090266] [n003:1159780:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.102359] [n003:1159784:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.106054] [n003:1159778:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.114307] [n003:1159793:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.117468] [n003:1159782:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.117661] [n003:1159783:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.147100] [n003:1159787:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.154428] [n003:1159791:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.154627] [n003:1159790:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.154823] [n003:1159796:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.156797] [n003:1159786:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.157152] [n003:1159797:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.164937] [n003:1159794:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.165477] [n003:1159795:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.166124] [n003:1159788:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.166153] [n003:1159789:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.170317] [n003:1159779:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.170556] [n003:1159777:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.171392] [n003:1159770:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.171709] [n003:1159792:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.171798] [n003:1159776:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.173529] [n003:1159785:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174246] [n003:1159773:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174359] [n003:1159772:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174392] [n003:1159768:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174646] [n003:1159775:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174714] [n003:1159769:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174734] [n003:1159781:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174775] [n003:1159774:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.174918] [n003:1159767:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.175182] [n003:1159766:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190302.182749] [n003:1159771:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=32,n_train=91968,n_test=3600,rep=0,T_total=1.2134,T_comp=1.1928,T_comm=0.020685,T_idle=9.7132e-05,accuracy=0.98111
+p=32,n_train=91968,n_test=3600,rep=1,T_total=1.2098,T_comp=1.1876,T_comm=0.022455,T_idle=0.00072767,accuracy=0.98111
+p=32,n_train=91968,n_test=3600,rep=2,T_total=1.2094,T_comp=1.1923,T_comm=0.017411,T_idle=0.0011939,accuracy=0.98111
+p=32,n_train=91968,n_test=3600,rep=3,T_total=1.2037,T_comp=1.1866,T_comm=0.017224,T_idle=3.2628e-05,accuracy=0.98111
+p=32,n_train=91968,n_test=3600,rep=4,T_total=1.2042,T_comp=1.1878,T_comm=0.017122,T_idle=0.00089045,accuracy=0.98111
+[1795190314.712295] [n003:1160189:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.714857] [n003:1160183:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.720567] [n003:1160176:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.723844] [n003:1160177:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.771506] [n003:1160194:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.772940] [n003:1160197:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.772979] [n003:1160205:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.772979] [n003:1160206:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.782589] [n003:1160198:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.782786] [n003:1160199:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.784416] [n003:1160196:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.790943] [n003:1160200:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.791409] [n003:1160191:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.792975] [n003:1160203:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.793528] [n003:1160204:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.794206] [n003:1160202:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.795185] [n003:1160192:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.795173] [n003:1160201:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.795233] [n003:1160195:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.795745] [n003:1160193:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.796185] [n003:1160186:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.796521] [n003:1160178:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.796676] [n003:1160181:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.796876] [n003:1160182:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.797143] [n003:1160185:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.798406] [n003:1160180:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.799004] [n003:1160187:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.799341] [n003:1160188:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.799950] [n003:1160179:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.800517] [n003:1160190:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.800558] [n003:1160175:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190314.801367] [n003:1160184:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=32,n_train=22992,n_test=3600,rep=0,T_total=0.33892,T_comp=0.32368,T_comm=0.014861,T_idle=0.016397,accuracy=0.98278
+p=32,n_train=22992,n_test=3600,rep=1,T_total=0.33735,T_comp=0.32587,T_comm=0.011693,T_idle=0.01559,accuracy=0.98278
+p=32,n_train=22992,n_test=3600,rep=2,T_total=0.33425,T_comp=0.32279,T_comm=0.011597,T_idle=0.01616,accuracy=0.98278
+p=32,n_train=22992,n_test=3600,rep=3,T_total=0.33726,T_comp=0.32655,T_comm=0.010591,T_idle=0.00012434,accuracy=0.98278
+p=32,n_train=22992,n_test=3600,rep=4,T_total=0.33619,T_comp=0.32188,T_comm=0.014352,T_idle=0.015233,accuracy=0.98278
+[1795190322.037714] [n003:1160590:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.137973] [n003:1160612:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.144337] [n003:1160605:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.144379] [n003:1160610:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.145474] [n003:1160606:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.147591] [n003:1160602:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.147804] [n003:1160607:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.153071] [n003:1160613:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.153205] [n003:1160603:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.153522] [n003:1160604:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.156630] [n003:1160614:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.158193] [n003:1160615:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.161577] [n003:1160611:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.162070] [n003:1160585:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.162162] [n003:1160600:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.164610] [n003:1160601:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.164749] [n003:1160589:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.164810] [n003:1160608:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.165193] [n003:1160592:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.165260] [n003:1160609:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166030] [n003:1160595:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166105] [n003:1160588:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166100] [n003:1160597:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166371] [n003:1160593:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166406] [n003:1160587:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166581] [n003:1160584:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166588] [n003:1160594:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166701] [n003:1160586:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.166900] [n003:1160598:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.167290] [n003:1160591:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.167455] [n003:1160599:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190322.177434] [n003:1160596:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=32,n_train=1437,n_test=360,rep=0,T_total=0.011023,T_comp=0.0072286,T_comm=0.0036176,T_idle=0.0002731,accuracy=0.98333
+p=32,n_train=1437,n_test=360,rep=1,T_total=0.010487,T_comp=0.0072702,T_comm=0.0031886,T_idle=0.00019641,accuracy=0.98333
+p=32,n_train=1437,n_test=360,rep=2,T_total=0.009561,T_comp=0.0081325,T_comm=0.0014035,T_idle=0.00026849,accuracy=0.98333
+p=32,n_train=1437,n_test=360,rep=3,T_total=0.0082853,T_comp=0.0068641,T_comm=0.0013985,T_idle=5.4864e-05,accuracy=0.98333
+p=32,n_train=1437,n_test=360,rep=4,T_total=0.008224,T_comp=0.0067525,T_comm=0.001329,T_idle=0.00016595,accuracy=0.98333
+FIN Fri Nov 20 10:58:45 -05 2026

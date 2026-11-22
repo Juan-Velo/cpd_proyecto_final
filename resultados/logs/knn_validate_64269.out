@@ -1,0 +1,203 @@
+######## p=1
+[1795189637.650773] [n005:2641772:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=1] digits beta2 == beta1 
+[OK ] [MPI p=1] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=1] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=1] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=1] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=1] aug beta2 == beta1 
+[OK ] [MPI p=1] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=1] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=1] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=1] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+######## p=2
+[1795189683.754411] [n005:2641815:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189683.762506] [n005:2641816:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=2] digits beta2 == beta1 
+[OK ] [MPI p=2] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=2] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=2] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=2] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=2] aug beta2 == beta1 
+[OK ] [MPI p=2] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=2] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=2] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=2] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+######## p=3
+[1795189719.424957] [n005:2641885:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189719.426521] [n005:2641886:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189719.428094] [n005:2641884:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=3] digits beta2 == beta1 
+[OK ] [MPI p=3] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=3] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=3] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=3] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=3] aug beta2 == beta1 
+[OK ] [MPI p=3] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=3] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=3] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=3] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+######## p=4
+[1795189752.005380] [n005:2641952:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189752.005511] [n005:2641954:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189752.014999] [n005:2641953:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189752.018062] [n005:2641951:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=4] digits beta2 == beta1 
+[OK ] [MPI p=4] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=4] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=4] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=4] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=4] aug beta2 == beta1 
+[OK ] [MPI p=4] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=4] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=4] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=4] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+######## p=5
+[1795189783.233676] [n005:2642030:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189783.233797] [n005:2642033:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189783.233859] [n005:2642032:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189783.243042] [n005:2642031:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189783.246120] [n005:2642034:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=5] digits beta2 == beta1 
+[OK ] [MPI p=5] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=5] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=5] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=5] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=5] aug beta2 == beta1 
+[OK ] [MPI p=5] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=5] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=5] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=5] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+######## p=7
+[1795189816.236363] [n005:2642152:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189816.245636] [n005:2642150:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189816.250945] [n005:2642149:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189816.254522] [n005:2642151:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189816.257610] [n005:2642148:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189816.257946] [n005:2642146:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189816.269684] [n005:2642147:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=7] digits beta2 == beta1 
+[OK ] [MPI p=7] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=7] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=7] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=7] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=7] aug beta2 == beta1 
+[OK ] [MPI p=7] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=7] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=7] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=7] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+######## p=8
+[1795189847.192685] [n005:2642266:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189847.193727] [n005:2642265:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189847.195542] [n005:2642263:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189847.195537] [n005:2642269:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189847.196032] [n005:2642268:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189847.196044] [n005:2642264:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189847.205550] [n005:2642262:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189847.208741] [n005:2642267:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=8] digits beta2 == beta1 
+[OK ] [MPI p=8] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=8] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=8] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=8] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=8] aug beta2 == beta1 
+[OK ] [MPI p=8] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=8] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=8] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=8] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+######## p=16
+[1795189877.107307] [n005:2642390:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.119090] [n005:2642391:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.142179] [n005:2642400:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.142249] [n005:2642398:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.142307] [n005:2642399:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.142327] [n005:2642396:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.142336] [n005:2642402:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.142446] [n005:2642401:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.145814] [n005:2642403:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.145955] [n005:2642389:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.146069] [n005:2642395:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.146096] [n005:2642388:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.146296] [n005:2642392:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.146381] [n005:2642394:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.146828] [n005:2642393:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795189877.155112] [n005:2642397:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[OK ] [MPI p=16] digits beta2 == beta1 
+[OK ] [MPI p=16] digits beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=16] digits beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=16] digits beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=16] digits beta3 ('replicate', 'pickle') == beta1 
+[OK ] [MPI p=16] aug beta2 == beta1 
+[OK ] [MPI p=16] aug beta3 ('dag', 'buffer') == beta1 
+[OK ] [MPI p=16] aug beta3 ('dag', 'pickle') == beta1 
+[OK ] [MPI p=16] aug beta3 ('replicate', 'buffer') == beta1 
+[OK ] [MPI p=16] aug beta3 ('replicate', 'pickle') == beta1 
+
+RESULTADO: TODO OK
+# load_digits: n_train=1437 n_test=360 k=3; consultas con empate de distancia en la frontera k: [58, 118, 135, 163, 308, 318, 331]
+[OK ] accuracy original == 0.9833 (0.9833)
+[OK ] beta1 loop/loop == original 
+[OK ] beta1 vector/gemm == original 
+[OK ] beta1 vector/direct == original 
+[OK ] DAG simulado p= 1 (gemm, n_tr%p=0) 
+[OK ] DAG simulado p= 2 (gemm, n_tr%p=1) 
+[OK ] DAG simulado p= 3 (gemm, n_tr%p=0) 
+[OK ] DAG simulado p= 4 (gemm, n_tr%p=1) 
+[OK ] DAG simulado p= 5 (gemm, n_tr%p=2) 
+[OK ] DAG simulado p= 6 (gemm, n_tr%p=3) 
+[OK ] DAG simulado p= 7 (gemm, n_tr%p=2) 
+[OK ] DAG simulado p= 8 (gemm, n_tr%p=5) 
+[OK ] DAG simulado p= 9 (gemm, n_tr%p=6) 
+[OK ] DAG simulado p=10 (gemm, n_tr%p=7) 
+[OK ] DAG simulado p=11 (gemm, n_tr%p=7) 
+[OK ] DAG simulado p=12 (gemm, n_tr%p=9) 
+[OK ] DAG simulado p=13 (gemm, n_tr%p=7) 
+[OK ] DAG simulado p=14 (gemm, n_tr%p=9) 
+[OK ] DAG simulado p=15 (gemm, n_tr%p=12) 
+[OK ] DAG simulado p=16 (gemm, n_tr%p=13) 
+[OK ] DAG simulado p=17 (gemm, n_tr%p=9) 
+[OK ] DAG simulado p=32 (gemm, n_tr%p=29) 
+[OK ] DAG simulado p=64 (gemm, n_tr%p=29) 
+[OK ] DAG simulado p= 1 (direct, n_tr%p=0) 
+[OK ] DAG simulado p= 2 (direct, n_tr%p=1) 
+[OK ] DAG simulado p= 3 (direct, n_tr%p=0) 
+[OK ] DAG simulado p= 4 (direct, n_tr%p=1) 
+[OK ] DAG simulado p= 5 (direct, n_tr%p=2) 
+[OK ] DAG simulado p= 6 (direct, n_tr%p=3) 
+[OK ] DAG simulado p= 7 (direct, n_tr%p=2) 
+[OK ] DAG simulado p= 8 (direct, n_tr%p=5) 
+[OK ] DAG simulado p= 9 (direct, n_tr%p=6) 
+[OK ] DAG simulado p=10 (direct, n_tr%p=7) 
+[OK ] DAG simulado p=11 (direct, n_tr%p=7) 
+[OK ] DAG simulado p=12 (direct, n_tr%p=9) 
+[OK ] DAG simulado p=13 (direct, n_tr%p=7) 
+[OK ] DAG simulado p=14 (direct, n_tr%p=9) 
+[OK ] DAG simulado p=15 (direct, n_tr%p=12) 
+[OK ] DAG simulado p=16 (direct, n_tr%p=13) 
+[OK ] DAG simulado p=17 (direct, n_tr%p=9) 
+[OK ] DAG simulado p=32 (direct, n_tr%p=29) 
+[OK ] DAG simulado p=64 (direct, n_tr%p=29) 
+[OK ] bloques con < k puntos (n_tr=20, p=16) 
+[OK ] majority_vote == Counter.most_common 
+[OK ] gemm == direct exacto (datos aumentados) 
+[OK ] aumentado n_tr=4000 DAG p=3 == loop 
+[OK ] aumentado n_tr=4000 DAG p=7 == loop 
+[OK ] aumentado n_tr=4000 DAG p=13 == loop 
+# sklearn brute: accuracy=0.9833; difieren 0 consultas [] (empate distancias: [], empate votos: [])
+[OK ] sklearn: toda diferencia explicada por empates no explicadas=[]
+
+RESULTADO: TODO OK

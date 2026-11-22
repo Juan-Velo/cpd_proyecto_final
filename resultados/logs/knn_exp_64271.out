@@ -1,0 +1,511 @@
+>>> 1 python src/beta3_mpi_optimizado.py --reps 5 --tag digits --out resultados/khipu_64271/digits.csv
+[1795190332.474670] [n003:1161068:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=1,n_train=1437,n_test=360,rep=0,T_total=0.0087091,T_comp=0.0085563,T_comm=0.00015143,T_idle=1.351e-06,accuracy=0.98333
+p=1,n_train=1437,n_test=360,rep=1,T_total=0.0091011,T_comp=0.0089322,T_comm=0.00016776,T_idle=1.154e-06,accuracy=0.98333
+p=1,n_train=1437,n_test=360,rep=2,T_total=0.011122,T_comp=0.01079,T_comm=0.0003306,T_idle=1.11e-06,accuracy=0.98333
+p=1,n_train=1437,n_test=360,rep=3,T_total=0.010161,T_comp=0.0098484,T_comm=0.00031144,T_idle=1.534e-06,accuracy=0.98333
+p=1,n_train=1437,n_test=360,rep=4,T_total=0.0096541,T_comp=0.0093159,T_comm=0.00033705,T_idle=1.114e-06,accuracy=0.98333
+>>> 2 python src/beta3_mpi_optimizado.py --reps 5 --tag digits --out resultados/khipu_64271/digits.csv
+[1795190335.665736] [n003:1161105:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190335.665740] [n003:1161106:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=2,n_train=1437,n_test=360,rep=0,T_total=0.0067337,T_comp=0.0064208,T_comm=0.00030133,T_idle=1.1518e-05,accuracy=0.98333
+p=2,n_train=1437,n_test=360,rep=1,T_total=0.0070544,T_comp=0.0067588,T_comm=0.00028421,T_idle=1.14e-05,accuracy=0.98333
+p=2,n_train=1437,n_test=360,rep=2,T_total=0.0070755,T_comp=0.0067859,T_comm=0.00028027,T_idle=9.422e-06,accuracy=0.98333
+p=2,n_train=1437,n_test=360,rep=3,T_total=0.007029,T_comp=0.0067569,T_comm=0.00025663,T_idle=1.5435e-05,accuracy=0.98333
+p=2,n_train=1437,n_test=360,rep=4,T_total=0.0072242,T_comp=0.0069424,T_comm=0.00027119,T_idle=1.0623e-05,accuracy=0.98333
+>>> 4 python src/beta3_mpi_optimizado.py --reps 5 --tag digits --out resultados/khipu_64271/digits.csv
+[1795190338.933105] [n003:1161155:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190338.939007] [n003:1161156:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190338.942487] [n003:1161157:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190338.950357] [n003:1161154:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=4,n_train=1437,n_test=360,rep=0,T_total=0.0049491,T_comp=0.0044938,T_comm=0.00042798,T_idle=0.00012054,accuracy=0.98333
+p=4,n_train=1437,n_test=360,rep=1,T_total=0.0048573,T_comp=0.0045062,T_comm=0.00033838,T_idle=1.27e-05,accuracy=0.98333
+p=4,n_train=1437,n_test=360,rep=2,T_total=0.0049112,T_comp=0.0045584,T_comm=0.00033966,T_idle=1.3141e-05,accuracy=0.98333
+p=4,n_train=1437,n_test=360,rep=3,T_total=0.0049257,T_comp=0.0045848,T_comm=0.000328,T_idle=1.292e-05,accuracy=0.98333
+p=4,n_train=1437,n_test=360,rep=4,T_total=0.0047367,T_comp=0.0043985,T_comm=0.00031923,T_idle=1.8983e-05,accuracy=0.98333
+>>> 6 python src/beta3_mpi_optimizado.py --reps 5 --tag digits --out resultados/khipu_64271/digits.csv
+[1795190342.182522] [n003:1161227:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190342.185111] [n003:1161232:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190342.192164] [n003:1161230:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190342.192602] [n003:1161231:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190342.193044] [n003:1161228:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190342.194063] [n003:1161229:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=6,n_train=1437,n_test=360,rep=0,T_total=0.0045301,T_comp=0.0039937,T_comm=0.00048308,T_idle=0.00047186,accuracy=0.98333
+p=6,n_train=1437,n_test=360,rep=1,T_total=0.0044777,T_comp=0.0040611,T_comm=0.00039295,T_idle=0.000258,accuracy=0.98333
+p=6,n_train=1437,n_test=360,rep=2,T_total=0.0044373,T_comp=0.004029,T_comm=0.00039576,T_idle=0.00043025,accuracy=0.98333
+p=6,n_train=1437,n_test=360,rep=3,T_total=0.0045363,T_comp=0.0041187,T_comm=0.00041116,T_idle=0.00029979,accuracy=0.98333
+p=6,n_train=1437,n_test=360,rep=4,T_total=0.0043449,T_comp=0.0039745,T_comm=0.00038777,T_idle=0.00027846,accuracy=0.98333
+>>> 8 python src/beta3_mpi_optimizado.py --reps 5 --tag digits --out resultados/khipu_64271/digits.csv
+[1795190345.486010] [n003:1161324:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190345.486131] [n003:1161329:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190345.486142] [n003:1161327:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190345.486225] [n003:1161326:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190345.486466] [n003:1161330:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190345.486540] [n003:1161331:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190345.487174] [n003:1161325:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190345.487665] [n003:1161328:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=8,n_train=1437,n_test=360,rep=0,T_total=0.0057136,T_comp=0.0036747,T_comm=0.0020102,T_idle=0.0010161,accuracy=0.98333
+p=8,n_train=1437,n_test=360,rep=1,T_total=0.0034191,T_comp=0.0029486,T_comm=0.00044837,T_idle=2.2187e-05,accuracy=0.98333
+p=8,n_train=1437,n_test=360,rep=2,T_total=0.003223,T_comp=0.0027812,T_comm=0.00042279,T_idle=4.3138e-05,accuracy=0.98333
+p=8,n_train=1437,n_test=360,rep=3,T_total=0.0031262,T_comp=0.0027021,T_comm=0.00041165,T_idle=2.0891e-05,accuracy=0.98333
+p=8,n_train=1437,n_test=360,rep=4,T_total=0.0031678,T_comp=0.0027545,T_comm=0.000397,T_idle=4.4574e-05,accuracy=0.98333
+>>> 12 python src/beta3_mpi_optimizado.py --reps 5 --tag digits --out resultados/khipu_64271/digits.csv
+[1795190348.980669] [n003:1161451:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.991812] [n003:1161448:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.992093] [n003:1161446:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.994717] [n003:1161452:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.995391] [n003:1161445:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.995639] [n003:1161449:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.997150] [n003:1161447:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.997586] [n003:1161450:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.998553] [n003:1161455:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.998490] [n003:1161456:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.998605] [n003:1161454:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190348.998832] [n003:1161453:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=12,n_train=1437,n_test=360,rep=0,T_total=0.0043955,T_comp=0.0023991,T_comm=0.0020123,T_idle=0.00029348,accuracy=0.98333
+p=12,n_train=1437,n_test=360,rep=1,T_total=0.0031135,T_comp=0.0024219,T_comm=0.00067522,T_idle=2.9208e-05,accuracy=0.98333
+p=12,n_train=1437,n_test=360,rep=2,T_total=0.003699,T_comp=0.0030017,T_comm=0.00066733,T_idle=2.9969e-05,accuracy=0.98333
+p=12,n_train=1437,n_test=360,rep=3,T_total=0.0029581,T_comp=0.0023077,T_comm=0.00066022,T_idle=2.2776e-05,accuracy=0.98333
+p=12,n_train=1437,n_test=360,rep=4,T_total=0.0028433,T_comp=0.0022037,T_comm=0.0006547,T_idle=2.2557e-05,accuracy=0.98333
+>>> 16 python src/beta3_mpi_optimizado.py --reps 5 --tag digits --out resultados/khipu_64271/digits.csv
+[1795190352.633808] [n003:1161619:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.645418] [n003:1161615:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.645468] [n003:1161614:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.645834] [n003:1161620:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.645863] [n003:1161616:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.648781] [n003:1161618:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.648802] [n003:1161625:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.649086] [n003:1161617:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.649444] [n003:1161622:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.649453] [n003:1161627:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.649662] [n003:1161624:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.650734] [n003:1161621:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.661196] [n003:1161623:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.662810] [n003:1161628:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.662897] [n003:1161629:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190352.663317] [n003:1161626:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=1437,n_test=360,rep=0,T_total=0.0048483,T_comp=0.0026156,T_comm=0.0022204,T_idle=0.00032829,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=1,T_total=0.0034341,T_comp=0.0026667,T_comm=0.00076348,T_idle=7.3872e-05,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=2,T_total=0.0032705,T_comp=0.0025112,T_comm=0.00073366,T_idle=0.00015942,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=3,T_total=0.0031733,T_comp=0.0024648,T_comm=0.00063766,T_idle=7.3127e-05,accuracy=0.98333
+p=16,n_train=1437,n_test=360,rep=4,T_total=0.0039596,T_comp=0.0033014,T_comm=0.00064095,T_idle=1.7227e-05,accuracy=0.98333
+>>> 1 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag strong_small --out resultados/khipu_64271/strong_small.csv
+[1795190356.008278] [n003:1161835:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=1,n_train=22992,n_test=3600,rep=0,T_total=1.6894,T_comp=1.6849,T_comm=0.0045489,T_idle=2.482e-06,accuracy=0.98278
+p=1,n_train=22992,n_test=3600,rep=1,T_total=1.6855,T_comp=1.6825,T_comm=0.0030312,T_idle=1.0733e-05,accuracy=0.98278
+p=1,n_train=22992,n_test=3600,rep=2,T_total=1.6807,T_comp=1.6776,T_comm=0.003124,T_idle=2.682e-06,accuracy=0.98278
+p=1,n_train=22992,n_test=3600,rep=3,T_total=1.6825,T_comp=1.6779,T_comm=0.0045923,T_idle=3.293e-06,accuracy=0.98278
+p=1,n_train=22992,n_test=3600,rep=4,T_total=1.6806,T_comp=1.6776,T_comm=0.0030113,T_idle=1.0339e-05,accuracy=0.98278
+>>> 2 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag strong_small --out resultados/khipu_64271/strong_small.csv
+[1795190369.430054] [n003:1161873:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190369.459993] [n003:1161874:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=2,n_train=22992,n_test=3600,rep=0,T_total=0.96134,T_comp=0.95582,T_comm=0.0054887,T_idle=0.0017626,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=1,T_total=0.96165,T_comp=0.95687,T_comm=0.0047663,T_idle=0.0014013,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=2,T_total=0.96015,T_comp=0.95645,T_comm=0.0036571,T_idle=0.00082693,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=3,T_total=0.95515,T_comp=0.9516,T_comm=0.0035317,T_idle=1.62e-05,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=4,T_total=0.95318,T_comp=0.94963,T_comm=0.0035306,T_idle=2.5605e-05,accuracy=0.98278
+>>> 4 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag strong_small --out resultados/khipu_64271/strong_small.csv
+[1795190378.573334] [n003:1161925:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190378.586040] [n003:1161924:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190378.592951] [n003:1161923:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190378.596039] [n003:1161922:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=4,n_train=22992,n_test=3600,rep=0,T_total=0.62268,T_comp=0.61684,T_comm=0.0058054,T_idle=0.0022588,accuracy=0.98278
+p=4,n_train=22992,n_test=3600,rep=1,T_total=0.61906,T_comp=0.61511,T_comm=0.0038015,T_idle=0.0018681,accuracy=0.98278
+p=4,n_train=22992,n_test=3600,rep=2,T_total=0.61828,T_comp=0.61284,T_comm=0.0053103,T_idle=0.0013509,accuracy=0.98278
+p=4,n_train=22992,n_test=3600,rep=3,T_total=0.61374,T_comp=0.61006,T_comm=0.003634,T_idle=0.00046899,accuracy=0.98278
+p=4,n_train=22992,n_test=3600,rep=4,T_total=0.61683,T_comp=0.61232,T_comm=0.0037773,T_idle=0.0012249,accuracy=0.98278
+>>> 6 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag strong_small --out resultados/khipu_64271/strong_small.csv
+[1795190385.593810] [n003:1161999:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190385.594385] [n003:1161996:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190385.596451] [n003:1161998:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190385.596809] [n003:1162000:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190385.608635] [n003:1161997:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190385.610735] [n003:1162001:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=6,n_train=22992,n_test=3600,rep=0,T_total=0.56495,T_comp=0.55983,T_comm=0.0060585,T_idle=0.00094546,accuracy=0.98278
+p=6,n_train=22992,n_test=3600,rep=1,T_total=0.56726,T_comp=0.5616,T_comm=0.0060399,T_idle=0.00046059,accuracy=0.98278
+p=6,n_train=22992,n_test=3600,rep=2,T_total=0.56725,T_comp=0.56133,T_comm=0.0068673,T_idle=0.0027584,accuracy=0.98278
+p=6,n_train=22992,n_test=3600,rep=3,T_total=0.56529,T_comp=0.56024,T_comm=0.0060153,T_idle=0.0013708,accuracy=0.98278
+p=6,n_train=22992,n_test=3600,rep=4,T_total=0.5664,T_comp=0.56135,T_comm=0.0060056,T_idle=0.0012787,accuracy=0.98278
+>>> 8 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag strong_small --out resultados/khipu_64271/strong_small.csv
+[1795190392.323505] [n003:1162101:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190392.331627] [n003:1162099:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190392.349170] [n003:1162104:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190392.349231] [n003:1162102:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190392.349493] [n003:1162100:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190392.356590] [n003:1162103:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190392.360733] [n003:1162098:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190392.361166] [n003:1162097:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=8,n_train=22992,n_test=3600,rep=0,T_total=0.55186,T_comp=0.54405,T_comm=0.0077226,T_idle=0.00047236,accuracy=0.98278
+p=8,n_train=22992,n_test=3600,rep=1,T_total=0.55293,T_comp=0.54805,T_comm=0.0046441,T_idle=0.0029146,accuracy=0.98278
+p=8,n_train=22992,n_test=3600,rep=2,T_total=0.55161,T_comp=0.54354,T_comm=0.0080375,T_idle=2.8749e-05,accuracy=0.98278
+p=8,n_train=22992,n_test=3600,rep=3,T_total=0.54832,T_comp=0.5447,T_comm=0.0035881,T_idle=4.0538e-05,accuracy=0.98278
+p=8,n_train=22992,n_test=3600,rep=4,T_total=0.54666,T_comp=0.54311,T_comm=0.0035161,T_idle=2.7989e-05,accuracy=0.98278
+>>> 12 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag strong_small --out resultados/khipu_64271/strong_small.csv
+[1795190399.140796] [n003:1162218:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.141207] [n003:1162225:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.149794] [n003:1162223:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.150186] [n003:1162229:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.150289] [n003:1162227:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.151671] [n003:1162221:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.151654] [n003:1162228:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.156920] [n003:1162220:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.157600] [n003:1162224:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.158062] [n003:1162222:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.158109] [n003:1162219:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190399.162210] [n003:1162226:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=12,n_train=22992,n_test=3600,rep=0,T_total=0.39134,T_comp=0.384,T_comm=0.0072288,T_idle=0.0021058,accuracy=0.98278
+p=12,n_train=22992,n_test=3600,rep=1,T_total=0.38907,T_comp=0.38429,T_comm=0.0047968,T_idle=0.0011305,accuracy=0.98278
+p=12,n_train=22992,n_test=3600,rep=2,T_total=0.39092,T_comp=0.38587,T_comm=0.0050116,T_idle=5.5193e-05,accuracy=0.98278
+p=12,n_train=22992,n_test=3600,rep=3,T_total=0.39331,T_comp=0.38547,T_comm=0.0077212,T_idle=0.0019122,accuracy=0.98278
+p=12,n_train=22992,n_test=3600,rep=4,T_total=0.38677,T_comp=0.38236,T_comm=0.0044796,T_idle=0.00044898,accuracy=0.98278
+>>> 16 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag strong_small --out resultados/khipu_64271/strong_small.csv
+[1795190407.576021] [n003:1162406:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.576044] [n003:1162404:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.576117] [n003:1162403:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.576220] [n003:1162401:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.576306] [n003:1162407:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.588490] [n003:1162408:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.589130] [n003:1162402:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.589180] [n003:1162405:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.591792] [n003:1162415:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.591867] [n003:1162412:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.591983] [n003:1162414:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.592216] [n003:1162411:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.592277] [n003:1162409:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.592313] [n003:1162413:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.593835] [n003:1162410:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190407.616029] [n003:1162416:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=22992,n_test=3600,rep=0,T_total=0.30252,T_comp=0.29337,T_comm=0.0090394,T_idle=0.00012834,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=1,T_total=0.29784,T_comp=0.29044,T_comm=0.0073913,T_idle=0.00037229,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=2,T_total=0.29788,T_comp=0.29183,T_comm=0.0061245,T_idle=0.0011427,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=3,T_total=0.29863,T_comp=0.29248,T_comm=0.0061722,T_idle=0.0010145,accuracy=0.98278
+p=16,n_train=22992,n_test=3600,rep=4,T_total=0.29941,T_comp=0.29104,T_comm=0.0079808,T_idle=0.00078415,accuracy=0.98278
+>>> 1 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag strong --out resultados/khipu_64271/strong.csv
+[1795190414.645376] [n003:1162619:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=1,n_train=91968,n_test=3600,rep=0,T_total=7.1679,T_comp=7.1487,T_comm=0.019201,T_idle=1.0327e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=1,T_total=7.1839,T_comp=7.1648,T_comm=0.019011,T_idle=1.0229e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=2,T_total=7.2635,T_comp=7.2441,T_comm=0.01942,T_idle=1.0872e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=3,T_total=7.2141,T_comp=7.1948,T_comm=0.019275,T_idle=1.0485e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=4,T_total=7.208,T_comp=7.1886,T_comm=0.019449,T_idle=2.82e-06,accuracy=0.98111
+>>> 2 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag strong --out resultados/khipu_64271/strong.csv
+[1795190461.908378] [n003:1162666:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190461.915026] [n003:1162667:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=2,n_train=91968,n_test=3600,rep=0,T_total=3.7858,T_comp=3.7662,T_comm=0.019595,T_idle=3.5539e-05,accuracy=0.98111
+p=2,n_train=91968,n_test=3600,rep=1,T_total=3.8197,T_comp=3.8073,T_comm=0.012302,T_idle=4.878e-05,accuracy=0.98111
+p=2,n_train=91968,n_test=3600,rep=2,T_total=3.7967,T_comp=3.7844,T_comm=0.012234,T_idle=4.45e-05,accuracy=0.98111
+p=2,n_train=91968,n_test=3600,rep=3,T_total=3.7893,T_comp=3.7771,T_comm=0.012123,T_idle=4.8282e-05,accuracy=0.98111
+p=2,n_train=91968,n_test=3600,rep=4,T_total=3.7756,T_comp=3.7631,T_comm=0.012484,T_idle=3.4408e-05,accuracy=0.98111
+>>> 4 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag strong --out resultados/khipu_64271/strong.csv
+[1795190488.153699] [n003:1162733:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190488.156310] [n003:1162734:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190488.156992] [n003:1162732:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190488.167992] [n003:1162731:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=4,n_train=91968,n_test=3600,rep=0,T_total=2.3985,T_comp=2.3852,T_comm=0.013211,T_idle=5.1952e-05,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=1,T_total=2.3851,T_comp=2.3761,T_comm=0.0089552,T_idle=3.441e-05,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=2,T_total=2.399,T_comp=2.3889,T_comm=0.010085,T_idle=5.3094e-05,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=3,T_total=2.3971,T_comp=2.3884,T_comm=0.0086883,T_idle=1.9149e-05,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=4,T_total=2.3877,T_comp=2.3789,T_comm=0.0088028,T_idle=0.002283,accuracy=0.98111
+>>> 6 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag strong --out resultados/khipu_64271/strong.csv
+[1795190505.956892] [n003:1162808:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190505.968434] [n003:1162813:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190505.968441] [n003:1162809:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190505.969478] [n003:1162812:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190505.972490] [n003:1162811:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190505.981363] [n003:1162810:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=6,n_train=91968,n_test=3600,rep=0,T_total=2.1418,T_comp=2.1295,T_comm=0.012723,T_idle=0.0012424,accuracy=0.98111
+p=6,n_train=91968,n_test=3600,rep=1,T_total=2.1406,T_comp=2.1316,T_comm=0.0094034,T_idle=0.0021649,accuracy=0.98111
+p=6,n_train=91968,n_test=3600,rep=2,T_total=2.1407,T_comp=2.1307,T_comm=0.01023,T_idle=0.00083493,accuracy=0.98111
+p=6,n_train=91968,n_test=3600,rep=3,T_total=2.1292,T_comp=2.1209,T_comm=0.0086564,T_idle=0.010582,accuracy=0.98111
+p=6,n_train=91968,n_test=3600,rep=4,T_total=2.1404,T_comp=2.1314,T_comm=0.0094998,T_idle=0.0015581,accuracy=0.98111
+>>> 8 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag strong --out resultados/khipu_64271/strong.csv
+[1795190522.392379] [n003:1162921:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190522.392387] [n003:1162922:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190522.395035] [n003:1162920:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190522.395130] [n003:1162919:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190522.395236] [n003:1162924:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190522.395552] [n003:1162918:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190522.396529] [n003:1162925:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190522.406179] [n003:1162923:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=8,n_train=91968,n_test=3600,rep=0,T_total=2.1354,T_comp=2.123,T_comm=0.012294,T_idle=0.012787,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=1,T_total=2.1419,T_comp=2.131,T_comm=0.010716,T_idle=0.013681,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=2,T_total=2.1278,T_comp=2.1155,T_comm=0.012252,T_idle=0.0090475,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=3,T_total=2.1442,T_comp=2.1359,T_comm=0.0083412,T_idle=0.0024067,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=4,T_total=2.122,T_comp=2.1126,T_comm=0.0094301,T_idle=0.0018222,accuracy=0.98111
+>>> 12 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag strong --out resultados/khipu_64271/strong.csv
+[1795190538.990056] [n003:1163052:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190538.989996] [n003:1163055:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190538.993160] [n003:1163047:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190538.993158] [n003:1163051:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190538.993287] [n003:1163045:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190538.993276] [n003:1163050:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190538.993458] [n003:1163048:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190539.003071] [n003:1163053:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190539.004023] [n003:1163054:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190539.005722] [n003:1163044:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190539.005722] [n003:1163049:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190539.006725] [n003:1163046:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=12,n_train=91968,n_test=3600,rep=0,T_total=1.4506,T_comp=1.4313,T_comm=0.019076,T_idle=0.0025036,accuracy=0.98111
+p=12,n_train=91968,n_test=3600,rep=1,T_total=1.4538,T_comp=1.4389,T_comm=0.014743,T_idle=0.00087651,accuracy=0.98111
+p=12,n_train=91968,n_test=3600,rep=2,T_total=1.4515,T_comp=1.4359,T_comm=0.015669,T_idle=0.0027319,accuracy=0.98111
+p=12,n_train=91968,n_test=3600,rep=3,T_total=1.4467,T_comp=1.4328,T_comm=0.013933,T_idle=0.0032837,accuracy=0.98111
+p=12,n_train=91968,n_test=3600,rep=4,T_total=1.4408,T_comp=1.4313,T_comm=0.0096262,T_idle=0.0041255,accuracy=0.98111
+>>> 16 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag strong --out resultados/khipu_64271/strong.csv
+[1795190551.482018] [n003:1163215:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.482077] [n003:1163214:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.485302] [n003:1163225:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.485344] [n003:1163222:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.485340] [n003:1163223:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.486194] [n003:1163221:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.490008] [n003:1163217:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.500636] [n003:1163224:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.503287] [n003:1163227:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.503506] [n003:1163228:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.503531] [n003:1163216:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.503647] [n003:1163226:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.503982] [n003:1163219:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.504045] [n003:1163220:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.504839] [n003:1163213:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190551.516683] [n003:1163218:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=91968,n_test=3600,rep=0,T_total=1.0952,T_comp=1.0804,T_comm=0.014762,T_idle=6.6875e-05,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=1,T_total=1.0882,T_comp=1.0768,T_comm=0.011424,T_idle=2.5972e-05,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=2,T_total=1.0947,T_comp=1.0843,T_comm=0.010576,T_idle=0.0012284,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=3,T_total=1.0915,T_comp=1.081,T_comm=0.010394,T_idle=3.4427e-05,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=4,T_total=1.0848,T_comp=1.0744,T_comm=0.010399,T_idle=4.877e-05,accuracy=0.98111
+>>> 1 python src/beta3_mpi_optimizado.py --n-train 11496 --n-test 3600 --reps 5 --tag weak --out resultados/khipu_64271/weak.csv
+[1795190561.516663] [n003:1163430:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=1,n_train=11496,n_test=3600,rep=0,T_total=0.84805,T_comp=0.84623,T_comm=0.0018117,T_idle=2.68e-06,accuracy=0.98139
+p=1,n_train=11496,n_test=3600,rep=1,T_total=0.84655,T_comp=0.84269,T_comm=0.0038618,T_idle=2.623e-06,accuracy=0.98139
+p=1,n_train=11496,n_test=3600,rep=2,T_total=0.8425,T_comp=0.84087,T_comm=0.0016258,T_idle=2.623e-06,accuracy=0.98139
+p=1,n_train=11496,n_test=3600,rep=3,T_total=0.84196,T_comp=0.84026,T_comm=0.0016934,T_idle=1.0691e-05,accuracy=0.98139
+p=1,n_train=11496,n_test=3600,rep=4,T_total=0.83952,T_comp=0.83774,T_comm=0.0017687,T_idle=3.033e-06,accuracy=0.98139
+>>> 2 python src/beta3_mpi_optimizado.py --n-train 22992 --n-test 3600 --reps 5 --tag weak --out resultados/khipu_64271/weak.csv
+[1795190569.873311] [n003:1163472:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190569.882897] [n003:1163473:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=2,n_train=22992,n_test=3600,rep=0,T_total=0.96754,T_comp=0.96272,T_comm=0.004778,T_idle=0.0018348,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=1,T_total=0.95049,T_comp=0.94593,T_comm=0.0045417,T_idle=1.7835e-05,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=2,T_total=0.94835,T_comp=0.94473,T_comm=0.0035724,T_idle=4.7153e-05,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=3,T_total=0.9452,T_comp=0.94165,T_comm=0.0035319,T_idle=1.7718e-05,accuracy=0.98278
+p=2,n_train=22992,n_test=3600,rep=4,T_total=0.94894,T_comp=0.94536,T_comm=0.0035551,T_idle=2.6948e-05,accuracy=0.98278
+>>> 4 python src/beta3_mpi_optimizado.py --n-train 45984 --n-test 3600 --reps 5 --tag weak --out resultados/khipu_64271/weak.csv
+[1795190578.815718] [n003:1163524:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190578.821507] [n003:1163522:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190578.825977] [n003:1163521:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190578.826343] [n003:1163523:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=4,n_train=45984,n_test=3600,rep=0,T_total=1.2214,T_comp=1.2137,T_comm=0.0076819,T_idle=3.7495e-05,accuracy=0.98111
+p=4,n_train=45984,n_test=3600,rep=1,T_total=1.214,T_comp=1.2082,T_comm=0.0058498,T_idle=1.8658e-05,accuracy=0.98111
+p=4,n_train=45984,n_test=3600,rep=2,T_total=1.2132,T_comp=1.2079,T_comm=0.0052909,T_idle=5.2016e-05,accuracy=0.98111
+p=4,n_train=45984,n_test=3600,rep=3,T_total=1.2293,T_comp=1.2241,T_comm=0.0052343,T_idle=1.9311e-05,accuracy=0.98111
+p=4,n_train=45984,n_test=3600,rep=4,T_total=1.235,T_comp=1.2295,T_comm=0.0053152,T_idle=0.0004342,accuracy=0.98111
+>>> 6 python src/beta3_mpi_optimizado.py --n-train 68976 --n-test 3600 --reps 5 --tag weak --out resultados/khipu_64271/weak.csv
+[1795190589.445822] [n003:1163596:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190589.446411] [n003:1163598:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190589.457188] [n003:1163599:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190589.457602] [n003:1163595:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190589.458143] [n003:1163597:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190589.458160] [n003:1163594:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=6,n_train=68976,n_test=3600,rep=0,T_total=1.6228,T_comp=1.6099,T_comm=0.01288,T_idle=3.0406e-05,accuracy=0.98028
+p=6,n_train=68976,n_test=3600,rep=1,T_total=1.6107,T_comp=1.6035,T_comm=0.0071238,T_idle=6.9449e-05,accuracy=0.98028
+p=6,n_train=68976,n_test=3600,rep=2,T_total=1.6125,T_comp=1.6047,T_comm=0.0077616,T_idle=4.4527e-05,accuracy=0.98028
+p=6,n_train=68976,n_test=3600,rep=3,T_total=1.6124,T_comp=1.6032,T_comm=0.0091625,T_idle=2.2905e-05,accuracy=0.98028
+p=6,n_train=68976,n_test=3600,rep=4,T_total=1.6094,T_comp=1.6023,T_comm=0.0070284,T_idle=6.844e-05,accuracy=0.98028
+>>> 8 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 5 --tag weak --out resultados/khipu_64271/weak.csv
+[1795190602.671345] [n003:1163712:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190602.676494] [n003:1163709:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190602.676714] [n003:1163711:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190602.677245] [n003:1163706:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190602.677385] [n003:1163710:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190602.677431] [n003:1163707:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190602.677785] [n003:1163708:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190602.690096] [n003:1163713:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=8,n_train=91968,n_test=3600,rep=0,T_total=2.125,T_comp=2.1128,T_comm=0.012215,T_idle=0.0016126,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=1,T_total=2.1197,T_comp=2.1103,T_comm=0.009111,T_idle=0.0024392,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=2,T_total=2.1178,T_comp=2.105,T_comm=0.012865,T_idle=0.0011087,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=3,T_total=2.116,T_comp=2.1062,T_comm=0.0098019,T_idle=0.0024083,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=4,T_total=2.1197,T_comp=2.1104,T_comm=0.0091494,T_idle=0.0015931,accuracy=0.98111
+>>> 12 python src/beta3_mpi_optimizado.py --n-train 137952 --n-test 3600 --reps 5 --tag weak --out resultados/khipu_64271/weak.csv
+[1795190619.123791] [n003:1163830:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.123919] [n003:1163834:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.124823] [n003:1163831:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.124848] [n003:1163829:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.124909] [n003:1163828:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.124914] [n003:1163833:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.125198] [n003:1163835:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.125640] [n003:1163832:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.136262] [n003:1163837:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.136854] [n003:1163838:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.136942] [n003:1163836:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190619.149106] [n003:1163827:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=12,n_train=137952,n_test=3600,rep=0,T_total=2.145,T_comp=2.1269,T_comm=0.018043,T_idle=0.0018059,accuracy=0.98
+p=12,n_train=137952,n_test=3600,rep=1,T_total=2.1409,T_comp=2.1251,T_comm=0.015832,T_idle=0.0012323,accuracy=0.98
+p=12,n_train=137952,n_test=3600,rep=2,T_total=2.1496,T_comp=2.1343,T_comm=0.01527,T_idle=0.00095277,accuracy=0.98
+p=12,n_train=137952,n_test=3600,rep=3,T_total=2.1288,T_comp=2.1144,T_comm=0.014514,T_idle=0.0096171,accuracy=0.98
+p=12,n_train=137952,n_test=3600,rep=4,T_total=2.1315,T_comp=2.1177,T_comm=0.013845,T_idle=0.0022111,accuracy=0.98
+>>> 16 python src/beta3_mpi_optimizado.py --n-train 183936 --n-test 3600 --reps 5 --tag weak --out resultados/khipu_64271/weak.csv
+[1795190635.854388] [n003:1164008:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.863050] [n003:1164005:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.863099] [n003:1164006:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.863454] [n003:1164002:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.873921] [n003:1164004:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.876082] [n003:1164003:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.876932] [n003:1164001:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.879804] [n003:1164012:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.879797] [n003:1164016:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.880052] [n003:1164014:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.880149] [n003:1164010:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.880898] [n003:1164013:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.881295] [n003:1164011:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.881359] [n003:1164009:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.882017] [n003:1164015:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190635.887296] [n003:1164007:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=183936,n_test=3600,rep=0,T_total=2.1488,T_comp=2.1276,T_comm=0.020916,T_idle=0.0011787,accuracy=0.98167
+p=16,n_train=183936,n_test=3600,rep=1,T_total=2.1343,T_comp=2.118,T_comm=0.016269,T_idle=0.0013061,accuracy=0.98167
+p=16,n_train=183936,n_test=3600,rep=2,T_total=2.1474,T_comp=2.1265,T_comm=0.020493,T_idle=0.0017934,accuracy=0.98167
+p=16,n_train=183936,n_test=3600,rep=3,T_total=2.1542,T_comp=2.1351,T_comm=0.019289,T_idle=0.0002221,accuracy=0.98167
+p=16,n_train=183936,n_test=3600,rep=4,T_total=2.1558,T_comp=2.138,T_comm=0.017969,T_idle=0.0014908,accuracy=0.98167
+>>> 1 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --variant replicate --tag cmp_replicate --out resultados/khipu_64271/compare.csv
+[1795190652.460634] [n003:1164218:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=1,n_train=91968,n_test=3600,rep=0,T_total=7.233,T_comp=7.2314,T_comm=0.0015334,T_idle=1.1174e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=1,T_total=7.2214,T_comp=7.219,T_comm=0.002359,T_idle=1.0692e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=2,T_total=7.209,T_comp=7.2063,T_comm=0.0027009,T_idle=1.0491e-05,accuracy=0.98111
+>>> 1 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --comm pickle --tag cmp_pickle --out resultados/khipu_64271/compare.csv
+[1795190684.723050] [n003:1164267:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=1,n_train=91968,n_test=3600,rep=0,T_total=7.2563,T_comp=7.2021,T_comm=0.054258,T_idle=1.0144e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=1,T_total=7.2787,T_comp=7.2231,T_comm=0.055642,T_idle=1.0205e-05,accuracy=0.98111
+p=1,n_train=91968,n_test=3600,rep=2,T_total=7.2552,T_comp=7.2008,T_comm=0.054389,T_idle=2.7e-06,accuracy=0.98111
+>>> 4 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --variant replicate --tag cmp_replicate --out resultados/khipu_64271/compare.csv
+[1795190717.055437] [n003:1164330:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190717.056243] [n003:1164328:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190717.063182] [n003:1164329:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190717.071947] [n003:1164331:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=4,n_train=91968,n_test=3600,rep=0,T_total=2.5854,T_comp=2.5522,T_comm=0.033221,T_idle=0.00075546,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=1,T_total=2.589,T_comp=2.5567,T_comm=0.032204,T_idle=3.6222e-05,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=2,T_total=2.579,T_comp=2.5459,T_comm=0.033018,T_idle=0.0028276,accuracy=0.98111
+>>> 4 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --comm pickle --tag cmp_pickle --out resultados/khipu_64271/compare.csv
+[1795190730.906363] [n003:1164403:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190730.908213] [n003:1164402:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190730.919313] [n003:1164401:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190730.929008] [n003:1164404:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=4,n_train=91968,n_test=3600,rep=0,T_total=2.4381,T_comp=2.3882,T_comm=0.049866,T_idle=6.2739e-05,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=1,T_total=2.4384,T_comp=2.3891,T_comm=0.049298,T_idle=4.3522e-05,accuracy=0.98111
+p=4,n_train=91968,n_test=3600,rep=2,T_total=2.4478,T_comp=2.3912,T_comm=0.056601,T_idle=5.7745e-05,accuracy=0.98111
+>>> 8 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --variant replicate --tag cmp_replicate --out resultados/khipu_64271/compare.csv
+[1795190744.104573] [n003:1164478:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190744.106531] [n003:1164480:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190744.106599] [n003:1164476:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190744.106711] [n003:1164479:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190744.107043] [n003:1164482:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190744.109338] [n003:1164475:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190744.118067] [n003:1164481:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190744.130102] [n003:1164477:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=8,n_train=91968,n_test=3600,rep=0,T_total=2.3007,T_comp=2.2555,T_comm=0.04519,T_idle=5.7574e-05,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=1,T_total=2.3065,T_comp=2.2619,T_comm=0.04461,T_idle=0.0014868,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=2,T_total=2.2956,T_comp=2.2502,T_comm=0.045281,T_idle=5.5621e-05,accuracy=0.98111
+>>> 8 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --comm pickle --tag cmp_pickle --out resultados/khipu_64271/compare.csv
+[1795190756.849909] [n003:1164606:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190756.852916] [n003:1164603:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190756.852956] [n003:1164607:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190756.853582] [n003:1164601:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190756.853817] [n003:1164602:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190756.855576] [n003:1164605:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190756.862226] [n003:1164604:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190756.865686] [n003:1164608:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=8,n_train=91968,n_test=3600,rep=0,T_total=2.1657,T_comp=2.1155,T_comm=0.050077,T_idle=0.0052942,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=1,T_total=2.1769,T_comp=2.1259,T_comm=0.051077,T_idle=0.0032292,accuracy=0.98111
+p=8,n_train=91968,n_test=3600,rep=2,T_total=2.1612,T_comp=2.1111,T_comm=0.050073,T_idle=0.0014674,accuracy=0.98111
+>>> 16 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --variant replicate --tag cmp_replicate --out resultados/khipu_64271/compare.csv
+[1795190769.362920] [n003:1164737:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.363018] [n003:1164730:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.363197] [n003:1164734:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.363349] [n003:1164731:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.363384] [n003:1164735:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.363989] [n003:1164724:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.375172] [n003:1164736:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.375238] [n003:1164732:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.375296] [n003:1164723:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.375365] [n003:1164722:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.375442] [n003:1164729:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.375618] [n003:1164726:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.378231] [n003:1164733:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.385606] [n003:1164727:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.387121] [n003:1164725:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190769.389289] [n003:1164728:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=91968,n_test=3600,rep=0,T_total=1.1827,T_comp=1.1292,T_comm=0.053454,T_idle=0.00061092,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=1,T_total=1.1857,T_comp=1.1313,T_comm=0.054795,T_idle=0.0019499,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=2,T_total=1.1847,T_comp=1.1322,T_comm=0.052452,T_idle=0.0026778,accuracy=0.98111
+>>> 16 python src/beta3_mpi_optimizado.py --n-train 91968 --n-test 3600 --reps 3 --comm pickle --tag cmp_pickle --out resultados/khipu_64271/compare.csv
+[1795190778.049261] [n003:1164946:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.049296] [n003:1164947:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.050652] [n003:1164959:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.050949] [n003:1164953:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.053088] [n003:1164952:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.053099] [n003:1164950:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.053200] [n003:1164944:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.053227] [n003:1164954:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.053341] [n003:1164955:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.053388] [n003:1164945:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.053546] [n003:1164957:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.061582] [n003:1164948:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.062348] [n003:1164951:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.063903] [n003:1164949:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.065889] [n003:1164958:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190778.066003] [n003:1164956:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=91968,n_test=3600,rep=0,T_total=1.1342,T_comp=1.0812,T_comm=0.052117,T_idle=0.0012382,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=1,T_total=1.1336,T_comp=1.0787,T_comm=0.054585,T_idle=0.0071003,accuracy=0.98111
+p=16,n_train=91968,n_test=3600,rep=2,T_total=1.1269,T_comp=1.074,T_comm=0.053041,T_idle=0.010743,accuracy=0.98111
+>>> 1 python src/beta3_mpi_optimizado.py --n-train 11496 --n-test 1800 --reps 3 --kernel direct --tag direct --out resultados/khipu_64271/direct.csv
+[1795190786.192062] [n003:1165161:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=1,n_train=11496,n_test=1800,rep=0,T_total=4.949,T_comp=4.9461,T_comm=0.002855,T_idle=9.391e-06,accuracy=0.98111
+p=1,n_train=11496,n_test=1800,rep=1,T_total=4.8762,T_comp=4.873,T_comm=0.0031778,T_idle=2.984e-06,accuracy=0.98111
+p=1,n_train=11496,n_test=1800,rep=2,T_total=4.8691,T_comp=4.8662,T_comm=0.0028725,T_idle=8.707e-06,accuracy=0.98111
+>>> 2 python src/beta3_mpi_optimizado.py --n-train 11496 --n-test 1800 --reps 3 --kernel direct --tag direct --out resultados/khipu_64271/direct.csv
+[1795190809.115396] [n003:1165203:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190809.115408] [n003:1165204:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=2,n_train=11496,n_test=1800,rep=0,T_total=2.5013,T_comp=2.497,T_comm=0.0041684,T_idle=4.5898e-05,accuracy=0.98111
+p=2,n_train=11496,n_test=1800,rep=1,T_total=2.5139,T_comp=2.5118,T_comm=0.0020898,T_idle=0.010446,accuracy=0.98111
+p=2,n_train=11496,n_test=1800,rep=2,T_total=2.4972,T_comp=2.494,T_comm=0.0032234,T_idle=5.2422e-05,accuracy=0.98111
+>>> 4 python src/beta3_mpi_optimizado.py --n-train 11496 --n-test 1800 --reps 3 --kernel direct --tag direct --out resultados/khipu_64271/direct.csv
+[1795190822.331141] [n003:1165252:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190822.335397] [n003:1165254:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190822.335397] [n003:1165255:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190822.335730] [n003:1165253:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=4,n_train=11496,n_test=1800,rep=0,T_total=1.4307,T_comp=1.4284,T_comm=0.0021357,T_idle=0.0022681,accuracy=0.98111
+p=4,n_train=11496,n_test=1800,rep=1,T_total=1.4327,T_comp=1.4295,T_comm=0.0030993,T_idle=4.8946e-05,accuracy=0.98111
+p=4,n_train=11496,n_test=1800,rep=2,T_total=1.4311,T_comp=1.4287,T_comm=0.0023934,T_idle=1.7945e-05,accuracy=0.98111
+>>> 8 python src/beta3_mpi_optimizado.py --n-train 11496 --n-test 1800 --reps 3 --kernel direct --tag direct --out resultados/khipu_64271/direct.csv
+[1795190831.303809] [n003:1165341:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190831.304806] [n003:1165336:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190831.308906] [n003:1165335:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190831.308920] [n003:1165337:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190831.312668] [n003:1165338:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190831.317631] [n003:1165339:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190831.318020] [n003:1165340:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190831.329151] [n003:1165334:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=8,n_train=11496,n_test=1800,rep=0,T_total=1.0973,T_comp=1.0932,T_comm=0.0040044,T_idle=0.001515,accuracy=0.98111
+p=8,n_train=11496,n_test=1800,rep=1,T_total=1.099,T_comp=1.0959,T_comm=0.0030488,T_idle=0.0027984,accuracy=0.98111
+p=8,n_train=11496,n_test=1800,rep=2,T_total=1.0974,T_comp=1.0951,T_comm=0.0022707,T_idle=0.0026794,accuracy=0.98111
+>>> 16 python src/beta3_mpi_optimizado.py --n-train 11496 --n-test 1800 --reps 3 --kernel direct --tag direct --out resultados/khipu_64271/direct.csv
+[1795190839.364680] [n003:1165468:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.364684] [n003:1165469:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.364721] [n003:1165475:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.364932] [n003:1165470:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.387217] [n003:1165472:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.387916] [n003:1165463:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.389147] [n003:1165464:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.389176] [n003:1165461:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.389209] [n003:1165467:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.389369] [n003:1165474:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.389546] [n003:1165460:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.389730] [n003:1165462:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.389792] [n003:1165473:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.390481] [n003:1165471:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.390644] [n003:1165465:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+[1795190839.403373] [n003:1165466:0]        cuda_ctx.c:52   UCX  ERROR cuDeviceGetCount(&num_devices) failed: initialization error
+p=16,n_train=11496,n_test=1800,rep=0,T_total=0.53707,T_comp=0.53195,T_comm=0.00522,T_idle=0.0056922,accuracy=0.98111
+p=16,n_train=11496,n_test=1800,rep=1,T_total=0.53679,T_comp=0.53289,T_comm=0.0038544,T_idle=4.215e-05,accuracy=0.98111
+p=16,n_train=11496,n_test=1800,rep=2,T_total=0.53516,T_comp=0.52961,T_comm=0.0054979,T_idle=0.0021074,accuracy=0.98111
+{"version": "beta1", "mode": "vector", "kernel": "gemm", "n_train": 91968, "n_test": 3600, "d": 64, "k": 3, "p": 1, "T_total": 7.2512411857023835, "accuracy": 0.9811111111111112, "total_flops": 63568281600, "gflops_per_sec": 8.766538027357385}
+{"version": "beta1", "mode": "vector", "kernel": "gemm", "n_train": 22992, "n_test": 3600, "d": 64, "k": 3, "p": 1, "T_total": 1.6745370021089911, "accuracy": 0.9827777777777778, "total_flops": 15892070400, "gflops_per_sec": 9.490426535803493}
+{"version": "beta1", "mode": "original", "kernel": "loop", "n_train": 1437, "n_test": 360, "d": 64, "k": 3, "p": 1, "T_total": 1.9878314584493637, "accuracy": 0.9833333333333333, "total_flops": 99325440, "gflops_per_sec": 0.049966731121903175}
+{"version": "beta1", "mode": "vector", "kernel": "gemm", "n_train": 1437, "n_test": 360, "d": 64, "k": 3, "p": 1, "T_total": 0.012729831039905548, "accuracy": 0.9833333333333333, "total_flops": 99325440, "gflops_per_sec": 7.802573316851892}
+# original vs vector: 0 predicciones distintas []
+FIN Fri Nov 20 11:07:41 -05 2026

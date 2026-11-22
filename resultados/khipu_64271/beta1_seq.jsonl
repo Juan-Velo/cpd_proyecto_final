@@ -1,0 +1,4 @@
+{"version": "beta1", "mode": "vector", "kernel": "gemm", "n_train": 91968, "n_test": 3600, "d": 64, "k": 3, "p": 1, "T_total": 7.2512411857023835, "accuracy": 0.9811111111111112, "total_flops": 63568281600, "gflops_per_sec": 8.766538027357385}
+{"version": "beta1", "mode": "vector", "kernel": "gemm", "n_train": 22992, "n_test": 3600, "d": 64, "k": 3, "p": 1, "T_total": 1.6745370021089911, "accuracy": 0.9827777777777778, "total_flops": 15892070400, "gflops_per_sec": 9.490426535803493}
+{"version": "beta1", "mode": "original", "kernel": "loop", "n_train": 1437, "n_test": 360, "d": 64, "k": 3, "p": 1, "T_total": 1.9878314584493637, "accuracy": 0.9833333333333333, "total_flops": 99325440, "gflops_per_sec": 0.049966731121903175}
+{"version": "beta1", "mode": "vector", "kernel": "gemm", "n_train": 1437, "n_test": 360, "d": 64, "k": 3, "p": 1, "T_total": 0.012729831039905548, "accuracy": 0.9833333333333333, "total_flops": 99325440, "gflops_per_sec": 7.802573316851892}

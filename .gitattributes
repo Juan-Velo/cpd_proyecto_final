@@ -1,0 +1,4 @@
+# Los scripts se ejecutan en Khipu (Linux): siempre con finales de línea LF
+*.sh     text eol=lf
+*.sbatch text eol=lf
+*.py     text eol=lf
