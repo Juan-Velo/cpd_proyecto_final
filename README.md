@@ -25,8 +25,8 @@ Paralelización con MPI (`mpi4py`) del clasificador KNN de `knn_digits_sec.py` (
 | a) PRAM y código con `comm.scatter` / `comm.bcast` / `comm.gather` | Secs. 2.1–2.3 | [`src/beta2_mpi_basico.py`](src/beta2_mpi_basico.py) |
 | b) 3 versiones beta y validación | Sec. 2.6 | [`src/`](src/), [`tests/validate_knn.py`](tests/validate_knn.py) |
 | c) Tiempos, accuracy, normalización y *p* óptimo | Secs. 2.4–2.5, 3.1, 3.4 y 3.6 | [`analysis/figs_informe.py`](analysis/figs_informe.py) |
-| d) Speedup y FLOP/s vs *p* | Secs. 3.2–3.3 | ídem |
-| e) Escalabilidad con tamaño variable | Sec. 3.5 | ídem |
+| d) Speedup y FLOP/s vs *p* | Secs. 3.2–3.3 | [`analysis/figs_informe.py`](analysis/figs_informe.py) |
+| e) Escalabilidad con tamaño variable | Sec. 3.5 | [`analysis/figs_informe.py`](analysis/figs_informe.py) |
 
 ## Estructura
 
