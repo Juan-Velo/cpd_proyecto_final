@@ -15,7 +15,7 @@
 source khipu/env.sh
 OUT=resultados/khipu_${SLURM_JOB_ID}
 mkdir -p $OUT resultados/logs
-SERIES=${SERIES:-"digits strong_small strong weak compare direct"}
+SERIES=${SERIES:-"digits strong_small strong weak compare"}
 REPS=${REPS:-5}
 PS="1 2 4 6 8 12 16"
 B3="python src/beta3_mpi_optimizado.py"
@@ -41,12 +41,9 @@ for s in $SERIES; do case $s in
       run $p $B3 --n-train 91968 --n-test 3600 --reps 3 --variant replicate --tag cmp_replicate --out $OUT/compare.csv
       run $p $B3 --n-train 91968 --n-test 3600 --reps 3 --comm pickle      --tag cmp_pickle    --out $OUT/compare.csv
     done ;;
-  direct)        # kernel de formula directa (3d FLOP explicitos), tamano moderado
-    for p in 1 2 4 8 16; do run $p $B3 --n-train 11496 --n-test 1800 --reps 3 --kernel direct --tag direct --out $OUT/direct.csv; done ;;
 esac; done
 # referencia secuencial pura (beta1, sin MPI) para S(p) con Ts = mejor secuencial
 python src/beta1_secuencial.py --modes vector --n-train 91968 --n-test 3600 --out $OUT/beta1_seq.jsonl
 python src/beta1_secuencial.py --modes vector --n-train 22992 --n-test 3600 --out $OUT/beta1_seq.jsonl
 python src/beta1_secuencial.py --modes original,vector --out $OUT/beta1_seq.jsonl
-python src/beta1_secuencial.py --check-augment > $OUT/augment_check.jsonl
 echo "FIN $(date)"

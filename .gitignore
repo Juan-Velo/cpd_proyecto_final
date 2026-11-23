@@ -8,7 +8,7 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 
-# LaTeX: archivos auxiliares de compilación (solo en informe/ y presentacion/;
+# LaTeX: archivos auxiliares de compilación (solo en informe/;
 # los *.out de resultados/logs/ son logs de Slurm y SÍ se versionan)
 /informe/*.aux
 /informe/*.log
@@ -17,20 +17,9 @@ venv/
 /informe/*.synctex.gz
 /informe/*.fls
 /informe/*.fdb_latexmk
-/presentacion/*.aux
-/presentacion/*.log
-/presentacion/*.out
-/presentacion/*.toc
-/presentacion/*.nav
-/presentacion/*.snm
-/presentacion/*.vrb
-/presentacion/*.synctex.gz
-/presentacion/*.fls
-/presentacion/*.fdb_latexmk
 
 # Salidas regenerables y diagnósticos locales
 *.npy
-check_env.log
 resultados/*/figs/
 
 # Sistema operativo y editores
