@@ -17,6 +17,8 @@
 \usetikzlibrary{arrows.meta,positioning,calc}
 \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
 \usepackage{float}
+\usepackage{placeins}
+\usepackage{needspace}
 \usepackage{caption}
 \renewcommand{\topfraction}{0.88}
 \renewcommand{\bottomfraction}{0.85}
@@ -162,6 +164,7 @@ $S$, $E$ & speedup $T_1/T_p$ y eficiencia $S/p$ (U2.1)\\\bottomrule
 \end{figure}
 
 % =====================================================================
+\FloatBarrier
 \section{Método}
 \subsection{Diseño}
 Usamos la metodología de Foster (U1.2):
@@ -343,7 +346,14 @@ La Fig.~\ref{fig:tiempos} compara lo medido con la teoría:
 \label{fig:speedup}
 \end{figure}
 
-\begin{table}[htbp]
+La Fig.~\ref{fig:speedup} y la Tabla~\ref{tab:strong} muestran que:
+\begin{itemize}
+\item cuanto más grande es el problema, mejor escala: con $p=16$, $S=2.61$ en \texttt{load\_digits}, 5.63 en Mediano y 6.61 en Grande;
+\item la eficiencia cae hasta $p=8$ y luego se mantiene en 0.35--0.41 en los conjuntos grandes. Esa caída es la del cómputo explicada en la Sec.~\ref{sec:tiempos};
+\item en \texttt{load\_digits} el speedup deja de crecer después de $p\approx8$--12, porque hay muy poco trabajo para repartir.
+\end{itemize}
+
+\begin{table}[H]
 \centering\small
 \caption{Tiempo, speedup y eficiencia ($S=T_1/T_p$, $E=S/p$). $T_1$ es beta3 con un proceso.}\label{tab:strong}
 \setlength{\tabcolsep}{4pt}
@@ -360,13 +370,6 @@ $p$ & $T_p$ [ms] & $S$ & $E$ & $T_p$ [s] & $S$ & $E$ & $T_p$ [s] & $S$ & $E$\\\m
 \end{tabular}
 \end{table}
 
-La Fig.~\ref{fig:speedup} y la Tabla~\ref{tab:strong} muestran que:
-\begin{itemize}
-\item cuanto más grande es el problema, mejor escala: con $p=16$, $S=2.61$ en \texttt{load\_digits}, 5.63 en Mediano y 6.61 en Grande;
-\item la eficiencia cae hasta $p=8$ y luego se mantiene en 0.35--0.41 en los conjuntos grandes. Esa caída es la del cómputo explicada en la Sec.~\ref{sec:tiempos};
-\item en \texttt{load\_digits} el speedup deja de crecer después de $p\approx8$--12, porque hay muy poco trabajo para repartir.
-\end{itemize}
-
 \subsection{FLOP/s frente a $p$}\label{sec:flops}
 Como en U6.2, contamos los FLOP con la fórmula del algoritmo ($W=3d\,\ntr\nte$) y los dividimos entre el tiempo medido. Así lo pide el enunciado: FLOP basados en la fórmula de la distancia euclidiana. Para el conjunto Grande, $W=6.36\times10^{10}$ FLOP. Son GFLOP/s \emph{equivalentes}: beta3 obtiene la misma distancia con un producto de matrices, que ejecuta unas $2d$ operaciones por par en lugar de $3d$. Por eso no son operaciones contadas por el hardware.
 
@@ -378,10 +381,11 @@ Como en U6.2, contamos los FLOP con la fórmula del algoritmo ($W=3d\,\ntr\nte$)
 
 En la Fig.~\ref{fig:flops}, el conjunto Grande pasa de 8.8\,GFLOP/s con $p=1$ a \textbf{58.3\,GFLOP/s} con $p=16$, y el Mediano de 9.4 a 53.1. En \texttt{load\_digits} se llega como máximo a 30\,GFLOP/s ($p=12$) y luego baja, por el mismo motivo que el speedup.
 
+\Needspace{10\baselineskip}
 \subsection{Respuesta: cantidad óptima de procesos}\label{sec:resp}
 La Tabla~\ref{tab:pstar} aplica la Ec.~(\ref{eq:pstar}) a cada tamaño.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering\small
 \caption{Cantidad óptima de procesos: teoría ($p^*=\sqrt{A/B}$) frente a medición.}\label{tab:pstar}
 \begin{tabular}{@{}lrrrl@{}}\toprule
